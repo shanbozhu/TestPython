@@ -4,6 +4,7 @@ from Models.SearchDataRow import  SearchDataRow
 class SearchData:
     # columns = []
     # rows = []
+
     def __init__(self, dicti):
         self.columns = dicti["columns"] # arr
         self.rows = dicti["rows"] # arr

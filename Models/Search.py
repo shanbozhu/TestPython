@@ -4,6 +4,7 @@ class Search:
     # status = 0
     # msg = ""
     # data = {}
+
     def __init__(self, dicti):
         self.status = dicti["status"]
         self.msg = dicti["msg"]
