@@ -24,13 +24,13 @@ class Matrix:
 
     def requestData(self):
         # 请求路径,请求参数
-        url = "https://sugar.baidu-int.com/api/report/r_1013e-962sbne9-k6rm8k/chart-data/c_1013e-3x5owwj5-1d246m"
+        url = "https://sugar.baidu-int.com/api/report/r_1013e-1ntg07be-kr4bje/chart-data/c_1013e-2s170c5r-k49mmb"
 
-        print("请输入查询日期后回车(输入格式如: 2023-04-19,2023-04-25):")
-        date = input()
-        if not date:
-            print("未输入日期")
-            exit(1)
+        # print("请输入查询日期后回车(输入格式如: 2023-04-19,2023-04-25):")
+        # date = input()
+        # if not date:
+        #     print("未输入日期")
+        #     exit(1)
 
         # 请求头
         header = {
@@ -40,10 +40,8 @@ class Matrix:
         }
 
         # 请求体
-        # body = {"conditions": [{"k": "dateRange", "t": "dateRange", "v": "2023-04-19,2023-04-25"}],
-        #         "resourceHash": "c_1013e-3x5owwj5-1d246m", "pageHash": "r_1013e-962sbne9-k6rm8k"}
-        body = {"conditions": [{"k": "dateRange", "t": "dateRange", "v": date}],
-                "resourceHash": "c_1013e-3x5owwj5-1d246m", "pageHash": "r_1013e-962sbne9-k6rm8k"}
+        body = {"conditions":[{"k":"dateRange","t":"dateRange","v":"2023-04-28,2023-05-04"},{"k":"event_day","t":"date","v":"2023-05-04"},{"k":"compare_event_day","t":"date","v":"2023-05-04"},{"k":"app_id","t":"select","v":"12117"},{"k":"search_page","t":"select","v":"all"},{"k":"search_source","t":"select","v":"all"},{"k":"soft_version","t":"select","v":"2.1.0.11"},{"k":"net_type","t":"select","v":"all"},{"k":"device_level","t":"select","v":"all"}],"conditionsDisplayValue":{"app_id":"手百大字版"},"resourceHash":"c_1013e-2s170c5r-k49mmb","pageHash":"r_1013e-1ntg07be-kr4bje"}
+
         # 请求方式
         resp = requests.post(url, json=body, headers=header, timeout=10, verify=False)
 
@@ -51,17 +49,32 @@ class Matrix:
         content = str(resp.content, 'utf8')
         contentDict = json.loads(content)
 
-        search = Search(contentDict)
-        dataRow = search.data.rows
+        print('------b = ', content)
 
-        for row in dataRow:
-            if row.name == "对比":
-                continue
-            print("")
-            print(row.name, "           Android / iOS")
-            print("搜索结果页           ", row.key0)
-            print("搜索H5落地页         ", row.key1)
-            print("搜索NA落地页（百家号）", row.key2)
+        # print('------contentDict = ', contentDict['data']['rows'][0])
+
+
+        # search = Search(contentDict)
+        # print("search = ", search)
+
+        # dataCol = search.data.columns
+        # dataRow = search.data.rows
+
+        # print("dataCol = ", dataCol)
+        # for col in dataCol:
+        #     print("col.name", col.name)
+        #     print("col.id", col.id)
+
+        # # print("dataRow = ", dataRow)
+        # for row in dataRow:
+        #     if row.name == "对比":
+        #         continue
+        #     print("")
+        #     print(row.name, "           Android / iOS")
+        #     print("搜索结果页           ", row.key0)
+        #     print("搜索H5落地页         ", row.key1)
+        #     print("搜索NA落地页（百家号）", row.key2)
+        # print("dataRow = ", dataRow)
 
 if __name__ == '__main__':
     ma = Matrix()
