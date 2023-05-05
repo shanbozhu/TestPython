@@ -26,7 +26,7 @@ class Matrix:
         # 请求路径,请求参数
         url = "https://sugar.baidu-int.com/api/report/r_1013e-962sbne9-k6rm8k/chart-data/c_1013e-3x5owwj5-1d246m"
 
-        print("请输入查询日期后回车(输入格式如: 2023-04-19,2023-04-25):")
+        print("请输入\"极速版\"查询日期后回车(输入格式如: 2023-04-19,2023-04-25):")
         date = input()
         if not date:
             print("未输入日期")
