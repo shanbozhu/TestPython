@@ -8,8 +8,8 @@ class Search:
     def __init__(self, dicti):
         self.status = dicti["status"]
         self.msg = dicti["msg"]
-        self.data = dicti["data"] # dicti
+        self.data = dicti["data"] # dict
 
         searchData = SearchData(self.data)
-        self.data = searchData
+        self.data = searchData # model
         # print("searchData = ", searchData.columns)

@@ -18,6 +18,31 @@ from Models.Search import Search
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
+class SearchTomasDataRow:
+    def __init__(self, dicti):
+        # self.key0 = None
+        self.eventDayay = dicti["event_day"]
+        self.softVersion = dicti["soft_version"]
+        self.onpagetimeP80 = dicti["onpagetimeP80"]
+        self.pv = dicti["pv"]
+
+class SearchTomasData:
+    def __init__(self, dicti):
+        self.rows = dicti["rows"] # arr
+
+        tmpArr = []
+        for dic in self.rows:
+            tomasDataRow = SearchTomasDataRow(dic)
+            tmpArr.append(tomasDataRow)
+        self.rows = tmpArr
+
+class SearchTomas:
+    def __init__(self, dicti):
+        self.data = dicti["data"] # dict
+
+        tomasData = SearchTomasData(self.data)
+        self.data = tomasData # model
+
 class Matrix:
     def __init__(self):
         pass
@@ -49,32 +74,35 @@ class Matrix:
         content = str(resp.content, 'utf8')
         contentDict = json.loads(content)
 
-        print('------b = ', content)
+        print('------c = ', content)
 
         # print('------contentDict = ', contentDict['data']['rows'][0])
 
 
-        # search = Search(contentDict)
+        search = SearchTomas(contentDict)
         # print("search = ", search)
 
         # dataCol = search.data.columns
-        # dataRow = search.data.rows
+        dataRow = search.data.rows
 
         # print("dataCol = ", dataCol)
         # for col in dataCol:
         #     print("col.name", col.name)
         #     print("col.id", col.id)
 
-        # # print("dataRow = ", dataRow)
-        # for row in dataRow:
-        #     if row.name == "对比":
-        #         continue
-        #     print("")
-        #     print(row.name, "           Android / iOS")
-        #     print("搜索结果页           ", row.key0)
-        #     print("搜索H5落地页         ", row.key1)
-        #     print("搜索NA落地页（百家号）", row.key2)
         # print("dataRow = ", dataRow)
+        num = 0
+        for row in dataRow:
+            print("")
+            print("日期", row.eventDayay)
+            print("版本", row.softVersion)
+            print("80分位", row.onpagetimeP80)
+            print("PV", row.pv)
+            num += row.onpagetimeP80
+        # print("dataRow = ", dataRow)
+        num = num / 7.0
+        print("")
+        print("Tomas - H5搜索结果页速度7日均值", num)
 
 if __name__ == '__main__':
     ma = Matrix()
