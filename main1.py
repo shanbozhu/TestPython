@@ -16,6 +16,8 @@ import json
 import random
 from Models.Search import Search
 
+
+
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 class SearchTomasDataRow:
@@ -48,14 +50,23 @@ class Matrix:
         pass
 
     def requestData(self):
+
+        import datetime as DT
+
+        today = DT.date.today()
+        week_ago = today - DT.timedelta(days=7)
+
+        bb = str(today)
+        aa = str(week_ago)
+
         # 请求路径,请求参数
         url = "https://sugar.baidu-int.com/api/report/r_1013e-1ntg07be-kr4bje/chart-data/c_1013e-2s170c5r-k49mmb"
 
-        print("请输入\"大字版\"查询日期后回车(输入格式如: 2023-04-28,2023-05-04):")
-        date = input()
-        if not date:
-            print("未输入日期")
-            exit(1)
+        # print("请输入\"大字版\"查询日期后回车(输入格式如: 2023-04-28,2023-05-04):")
+        # date = input()
+        # if not date:
+        #     print("未输入日期")
+        #     exit(1)
 
         # 请求头
         header = {
@@ -66,7 +77,7 @@ class Matrix:
 
         # 请求体
         # body = {"conditions":[{"k":"dateRange","t":"dateRange","v":"2023-04-28,2023-05-04"},{"k":"event_day","t":"date","v":"2023-05-04"},{"k":"compare_event_day","t":"date","v":"2023-05-04"},{"k":"app_id","t":"select","v":"12117"},{"k":"search_page","t":"select","v":"all"},{"k":"search_source","t":"select","v":"all"},{"k":"soft_version","t":"select","v":"2.1.0.11"},{"k":"net_type","t":"select","v":"all"},{"k":"device_level","t":"select","v":"all"}],"conditionsDisplayValue":{"app_id":"手百大字版"},"resourceHash":"c_1013e-2s170c5r-k49mmb","pageHash":"r_1013e-1ntg07be-kr4bje"}
-        body = {"conditions": [{"k": "dateRange", "t": "dateRange", "v": date},
+        body = {"conditions": [{"k": "dateRange", "t": "dateRange", "v": aa + "," + bb},
                                {"k": "event_day", "t": "date", "v": "2023-05-04"},
                                {"k": "compare_event_day", "t": "date", "v": "2023-05-04"},
                                {"k": "app_id", "t": "select", "v": "12117"},
@@ -116,5 +127,7 @@ class Matrix:
         print("Tomas - H5搜索结果页速度7日均值", num)
 
 if __name__ == '__main__':
+
+
     ma = Matrix()
     ma.requestData()
