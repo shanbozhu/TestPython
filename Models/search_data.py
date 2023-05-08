@@ -1,5 +1,5 @@
-from Models.SearchDataCol import SearchDataCol
-from Models.SearchDataRow import  SearchDataRow
+from Models.search_data_col import SearchDataCol
+from Models.search_data_row import  SearchDataRow
 
 class SearchData:
     # columns = []

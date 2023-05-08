@@ -14,7 +14,7 @@ import requests
 import urllib3
 import json
 import random
-from Models.Search import Search
+from Models.search import Search
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 

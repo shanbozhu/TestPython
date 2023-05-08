@@ -1,4 +1,4 @@
-from Models.SearchData import SearchData
+from Models.search_data import SearchData
 
 class Search:
     # status = 0

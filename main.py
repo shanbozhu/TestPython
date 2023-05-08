@@ -14,7 +14,8 @@ import requests
 import urllib3
 import json
 import random
-from Models.Search import Search
+import datetime as DT
+from Models.search import Search
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -23,14 +24,23 @@ class Matrix:
         pass
 
     def requestData(self):
+        today = DT.date.today()
+        yesterday = today - DT.timedelta(days=1)
+        # 相对于昨天的6天前日期
+        week_ago = yesterday - DT.timedelta(days=6)
+        end_date = str(yesterday)
+        start_date = str(week_ago)
+        date = start_date + "," + end_date
+        print("\"极速版\"查询日期:", date)
+
         # 请求路径,请求参数
         url = "https://sugar.baidu-int.com/api/report/r_1013e-962sbne9-k6rm8k/chart-data/c_1013e-3x5owwj5-1d246m"
 
-        print("请输入\"极速版\"查询日期后回车(输入格式如: 2023-04-19,2023-04-25):")
-        date = input()
-        if not date:
-            print("未输入日期")
-            exit(1)
+        # print("请输入\"极速版\"查询日期后回车(输入格式如: 2023-04-19,2023-04-25):")
+        # date = input()
+        # if not date:
+        #     print("未输入日期")
+        #     exit(1)
 
         # 请求头
         header = {
