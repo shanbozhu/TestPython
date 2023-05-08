@@ -126,7 +126,5 @@ class Matrix:
         print("Tomas - H5搜索结果页速度7日均值", num)
 
 if __name__ == '__main__':
-
-
     ma = Matrix()
     ma.requestData()
