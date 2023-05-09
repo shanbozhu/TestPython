@@ -10,6 +10,6 @@ class Search(object):
         self.msg = dicti["msg"]
         self.data = dicti["data"] # dict
 
-        searchData = SearchData(self.data)
-        self.data = searchData # model
-        # print("searchData = ", searchData.columns)
+        search_data = SearchData(self.data)
+        self.data = search_data # model
+        # print("search_data = ", search_data.columns)

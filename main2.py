@@ -33,18 +33,18 @@ class SearchTomasData(object):
     def __init__(self, dicti):
         self.rows = dicti["rows"] # arr
 
-        tmpArr = []
+        tmp_arr = []
         for dic in self.rows:
-            tomasDataRow = SearchTomasDataRow(dic)
-            tmpArr.append(tomasDataRow)
-        self.rows = tmpArr
+            tomas_data_row = SearchTomasDataRow(dic)
+            tmp_arr.append(tomas_data_row)
+        self.rows = tmp_arr
 
 class SearchTomas(object):
     def __init__(self, dicti):
         self.data = dicti["data"] # dict
 
-        tomasData = SearchTomasData(self.data)
-        self.data = tomasData # model
+        tomas_data = SearchTomasData(self.data)
+        self.data = tomas_data # model
 
 class Matrix(object):
     def __init__(self):
@@ -95,28 +95,28 @@ class Matrix(object):
 
         # 解码
         content = str(resp.content, 'utf8')
-        contentDict = json.loads(content)
+        content_dict = json.loads(content)
 
         # print('------c = ', content)
 
-        # print('------contentDict = ', contentDict['data']['rows'][0])
+        # print('------contentDict = ', content_dict['data']['rows'][0])
 
 
-        search = SearchTomas(contentDict)
+        search = SearchTomas(content_dict)
         # print("search = ", search)
 
         # dataCol = search.data.columns
-        dataRow = search.data.rows
+        data_row = search.data.rows
 
         # print("dataCol = ", dataCol)
         # for col in dataCol:
         #     print("col.name", col.name)
         #     print("col.id", col.id)
 
-        # print("dataRow = ", dataRow)
+        # print("data_row = ", data_row)
 
         num = 0
-        for row in dataRow:
+        for row in data_row:
             # print("")
             # print("日期", row.event_day)
             # print("页面", row.search_page)
@@ -125,8 +125,8 @@ class Matrix(object):
             # print("80分位", row.quantile_80)
             # print("PV", row.pv)
             num += row.quantile_80
-        # print("dataRow = ", dataRow)
-        num = num / len(dataRow)
+        # print("data_row = ", data_row)
+        num = num / len(data_row)
         print("")
         print("Tomas - 搜索百家号落地页7日均值", num)
 

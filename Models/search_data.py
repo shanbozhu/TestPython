@@ -9,14 +9,14 @@ class SearchData(object):
         self.columns = dicti["columns"] # arr
         self.rows = dicti["rows"] # arr
 
-        tmpColArr = []
+        tmp_col_arr = []
         for dic in self.columns:
-            dataCol = SearchDataCol(dic)
-            tmpColArr.append(dataCol)
-        self.columns = tmpColArr
+            data_col = SearchDataCol(dic)
+            tmp_col_arr.append(data_col)
+        self.columns = tmp_col_arr
 
-        tmpRowArr = []
+        tmp_row_arr = []
         for dic in self.rows:
-            dataRow = SearchDataRow(dic)
-            tmpRowArr.append(dataRow)
-        self.rows = tmpRowArr
+            data_row = SearchDataRow(dic)
+            tmp_row_arr.append(data_row)
+        self.rows = tmp_row_arr

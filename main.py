@@ -61,14 +61,14 @@ class Matrix(object):
 
         # 解码
         content = str(resp.content, 'utf8')
-        contentDict = json.loads(content)
+        content_dict = json.loads(content)
 
-        search = Search(contentDict)
-        dataRow = search.data.rows
+        search = Search(content_dict)
+        data_row = search.data.rows
 
         logging.info("Hello World!!!")
 
-        for row in dataRow:
+        for row in data_row:
             if row.name == "对比":
                 continue
             print("")
