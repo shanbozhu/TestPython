@@ -13,7 +13,7 @@ import urllib3
 import json
 import random
 import datetime as dt
-import main1
+import main_tomas_search_result_page
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -75,7 +75,7 @@ class Matrix(object):
         }
 
         # 请求体
-        version = main1.Matrix().request_version()
+        version = main_tomas_search_result_page.Matrix().request_version()
         body = {"conditions": [{"k": "dateRange", "t": "dateRange", "v": date},
                                {"k": "event_day", "t": "date", "v": end_date},
                                {"k": "compare_event_day", "t": "date", "v": end_date},
@@ -109,7 +109,7 @@ class Matrix(object):
             num += row.quantile_80
         num = num / len(data_row)
         print("")
-        print("Tomas - 百家号落地页7日均值", num, ", 最大pv版本", version)
+        print("Tomas - 百家号落地页速度7日均值", num, ", 最大pv版本", version)
 
 if __name__ == '__main__':
     ma = Matrix()
