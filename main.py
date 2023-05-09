@@ -7,8 +7,6 @@ Author: zhushanbo
 Date: 2023/4/21
 Description:
 极速版 - 搜索结果页\h5落地页\百家号落地页上屏耗时
-
-https://sugar.baidu-int.com/group/matrix/report/r_1013e-962sbne9-k6rm8k?__scp__=Baidu&conditions=%7B%22dateRange%22%3A%222023-01-25%2C2023-01-31%22%7D
 """
 
 import requests
@@ -17,7 +15,6 @@ import json
 import random
 import datetime as dt
 from Models.search import Search
-import logging
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -52,8 +49,6 @@ class Matrix(object):
         }
 
         # 请求体
-        # body = {"conditions": [{"k": "dateRange", "t": "dateRange", "v": "2023-04-19,2023-04-25"}],
-        #         "resourceHash": "c_1013e-3x5owwj5-1d246m", "pageHash": "r_1013e-962sbne9-k6rm8k"}
         body = {"conditions": [{"k": "dateRange", "t": "dateRange", "v": date}],
                 "resourceHash": "c_1013e-3x5owwj5-1d246m", "pageHash": "r_1013e-962sbne9-k6rm8k"}
         # 请求方式
@@ -65,8 +60,6 @@ class Matrix(object):
 
         search = Search(content_dict)
         data_row = search.data.rows
-
-        logging.info("Hello World!!!")
 
         for row in data_row:
             if row.name == "对比":

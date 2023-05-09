@@ -6,8 +6,6 @@ File: myrequest.py
 Author: zhushanbo
 Date: 2023/4/21
 Description:
-
-https://sugar.baidu-int.com/group/matrix/report/r_1013e-962sbne9-k6rm8k?__scp__=Baidu&conditions=%7B%22dateRange%22%3A%222023-01-25%2C2023-01-31%22%7D
 """
 
 import requests
@@ -15,7 +13,6 @@ import urllib3
 import json
 import random
 import datetime as dt
-from Models.search import Search
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -75,8 +72,6 @@ class Matrix(object):
         }
 
         # 请求体
-        # body = {"conditions":[{"k":"dateRange","t":"dateRange","v":"2023-04-28,2023-05-04"},{"k":"event_day","t":"date","v":"2023-05-04"},{"k":"compare_event_day","t":"date","v":"2023-05-04"},{"k":"app_id","t":"select","v":"12117"},{"k":"search_page","t":"select","v":"all"},{"k":"search_source","t":"select","v":"all"},{"k":"soft_version","t":"select","v":"2.1.0.11"},{"k":"net_type","t":"select","v":"all"},{"k":"device_level","t":"select","v":"all"}],"conditionsDisplayValue":{"app_id":"手百大字版"},"resourceHash":"c_1013e-2s170c5r-k49mmb","pageHash":"r_1013e-1ntg07be-kr4bje"}
-
         version = "2.1.0.11"
         body = {"conditions": [{"k": "dateRange", "t": "dateRange", "v": date},
                                {"k": "event_day", "t": "date", "v": end_date},
@@ -97,21 +92,9 @@ class Matrix(object):
         content = str(resp.content, 'utf8')
         content_dict = json.loads(content)
 
-        # print('------c = ', content)
-        # print('------content_dict = ', content_dict['data']['rows'][0])
-
         search = SearchTomas(content_dict)
-        # print("search = ", search)
-
-        # dataCol = search.data.columns
         data_row = search.data.rows
 
-        # print("dataCol = ", dataCol)
-        # for col in dataCol:
-        #     print("col.name", col.name)
-        #     print("col.id", col.id)
-
-        # print("dataRow = ", dataRow)
         num = 0
         for row in data_row:
             # print("")
@@ -120,7 +103,6 @@ class Matrix(object):
             # print("80分位", row.onpagetimeP80)
             # print("PV", row.pv)
             num += row.onpagetimeP80
-        # print("data_row = ", data_row)
         num = num / len(data_row)
         print("")
         print("Tomas - 搜索H5结果页速度7日均值", num)

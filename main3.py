@@ -6,8 +6,6 @@ File: myrequest.py
 Author: zhushanbo
 Date: 2023/4/21
 Description:
-
-https://sugar.baidu-int.com/group/matrix/report/r_1013e-962sbne9-k6rm8k?__scp__=Baidu&conditions=%7B%22dateRange%22%3A%222023-01-25%2C2023-01-31%22%7D
 """
 
 import requests
@@ -15,7 +13,6 @@ import urllib3
 import json
 import random
 import datetime as dt
-from Models.search import Search
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -32,11 +29,11 @@ class SearchTomasData(object):
     def __init__(self, dicti):
         self.rows = dicti["rows"] # arr
 
-        tmpArr = []
+        tmp_arr = []
         for dic in self.rows:
-            tomasDataRow = SearchTomasDataRow(dic)
-            tmpArr.append(tomasDataRow)
-        self.rows = tmpArr
+            tomas_data_row = SearchTomasDataRow(dic)
+            tmp_arr.append(tomas_data_row)
+        self.rows = tmp_arr
 
 class SearchTomas(object):
     def __init__(self, dicti):
@@ -76,7 +73,6 @@ class Matrix(object):
         }
 
         # 请求体
-        # body = {"conditions":[{"k":"dateRange","t":"dateRange","v":"2023-05-02,2023-05-08"},{"k":"event_day","t":"date","v":"2023-05-08"},{"k":"compare_event_day","t":"date","v":"2023-05-08"},{"k":"app_id","t":"select","v":"12117"},{"k":"search_page","t":"select","v":"all"},{"k":"soft_version","t":"select","v":"2.1.0.11"},{"k":"net_type","t":"select","v":"all"},{"k":"device_level","t":"select","v":"all"},{"k":"pd","t":"select","v":"all"},{"k":"atn","t":"select","v":"all"},{"k":"status","t":"select","v":"all"}],"conditionsDisplayValue":{"app_id":"手百大字版"},"resourceHash":"c_1013e-c254mx61-kepbl7","pageHash":"r_1013e-8ad82r3p-o8ll5x"}
         version = "2.1.0.11"
         body = {"conditions": [{"k": "dateRange", "t": "dateRange", "v": date},
                                {"k": "event_day", "t": "date", "v": end_date},
@@ -95,26 +91,13 @@ class Matrix(object):
 
         # 解码
         content = str(resp.content, 'utf8')
-        contentDict = json.loads(content)
+        content_dict = json.loads(content)
 
-        # print('------c = ', content)
-        # print('------contentDict = ', contentDict['data']['rows'][0])
-
-        search = SearchTomas(contentDict)
-        # print("search = ", search)
-
-        # dataCol = search.data.columns
-        dataRow = search.data.rows
-
-        # print("dataCol = ", dataCol)
-        # for col in dataCol:
-        #     print("col.name", col.name)
-        #     print("col.id", col.id)
-
-        # print("dataRow = ", dataRow)
+        search = SearchTomas(content_dict)
+        data_row = search.data.rows
 
         num = 0
-        for row in dataRow:
+        for row in data_row:
             # print("")
             # print("日期", row.event_day)
             # print("页面", row.search_page)
@@ -122,8 +105,7 @@ class Matrix(object):
             # print("80分位", row.quantile_80)
             # print("PV", row.pv)
             num += row.quantile_80
-        # print("dataRow = ", dataRow)
-        num = num / len(dataRow)
+        num = num / len(data_row)
         print("")
         print("Tomas - 搜索H5落地页7日均值", num)
 
