@@ -65,10 +65,10 @@ class Matrix(object):
             if row.name == "对比":
                 continue
             print("")
-            print(row.name, "Android / iOS")
-            print("搜索结果页", row.key0)
-            print("搜索H5落地页", row.key1)
-            print("搜索NA落地页（百家号）", row.key2)
+            print(row.name, "iOS")
+            print("搜索结果页", row.key0.split('/')[1])
+            print("搜索H5落地页", row.key1.split('/')[1])
+            print("搜索NA落地页（百家号）", row.key2.split('/')[1])
 
 if __name__ == '__main__':
     ma = Matrix()
