@@ -105,7 +105,7 @@ class Matrix(object):
             num += row.onpagetimeP80
         num = num / len(data_row)
         print("")
-        print("Tomas - 搜索H5结果页速度7日均值", num)
+        print("Tomas - H5结果页速度7日均值", num)
 
 if __name__ == '__main__':
     ma = Matrix()

@@ -107,7 +107,7 @@ class Matrix(object):
             num += row.quantile_80
         num = num / len(data_row)
         print("")
-        print("Tomas - 搜索H5落地页7日均值", num)
+        print("Tomas - H5落地页7日均值", num)
 
 if __name__ == '__main__':
     ma = Matrix()
