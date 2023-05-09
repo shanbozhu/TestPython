@@ -1,4 +1,4 @@
-class SearchDataRow:
+class SearchDataRow(object):
     # name = ""
     # key0 = ""
     # key1 = ""

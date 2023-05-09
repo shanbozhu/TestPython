@@ -17,14 +17,15 @@ import json
 import random
 import datetime as DT
 from Models.search import Search
+import logging
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-class Matrix:
+class Matrix(object):
     def __init__(self):
         pass
 
-    def requestData(self):
+    def request_data(self):
         today = DT.date.today()
         yesterday = today - DT.timedelta(days=1)
         # 相对于昨天的6天前日期
@@ -65,6 +66,8 @@ class Matrix:
         search = Search(contentDict)
         dataRow = search.data.rows
 
+        logging.info("Hello World!!!")
+
         for row in dataRow:
             if row.name == "对比":
                 continue
@@ -76,4 +79,4 @@ class Matrix:
 
 if __name__ == '__main__':
     ma = Matrix()
-    ma.requestData()
+    ma.request_data()

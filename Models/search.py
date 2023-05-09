@@ -1,6 +1,6 @@
 from Models.search_data import SearchData
 
-class Search:
+class Search(object):
     # status = 0
     # msg = ""
     # data = {}

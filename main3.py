@@ -25,7 +25,6 @@ class SearchTomasDataRow(object):
         self.event_day = dicti["event_day"]
         self.search_page = dicti["search_page"]
         self.soft_version = dicti["soft_version"]
-        self.page_from_type = dicti["pageFromType"]
         self.quantile_80 = dicti["quantile_80"]
         self.pv = dicti["pv"]
 
@@ -61,7 +60,7 @@ class Matrix(object):
         print("\"大字版\"查询日期:", date)
 
         # 请求路径,请求参数
-        url = "https://sugar.baidu-int.com/api/report/r_1013e-cdbk97i6-oq99mj/chart-data/c_1013e-2snvzla2-1j7b54"
+        url = "https://sugar.baidu-int.com/api/report/r_1013e-8ad82r3p-o8ll5x/chart-data/c_1013e-c254mx61-kepbl7"
 
         # print("请输入\"大字版\"查询日期后回车(输入格式如: 2023-04-28,2023-05-04):")
         # date = input()
@@ -77,17 +76,18 @@ class Matrix(object):
         }
 
         # 请求体
-        # body = {"conditions":[{"k":"dateRange","t":"dateRange","v":"2023-05-02,2023-05-08"},{"k":"event_day","t":"date","v":"2023-05-08"},{"k":"compare_event_day","t":"date","v":"2023-05-08"},{"k":"app_id","t":"select","v":"12117"},{"k":"os","t":"select","v":"ios"},{"k":"search_page","t":"select","v":"shybird"},{"k":"soft_version","t":"select","v":"2.1.0.11"},{"k":"pageFromType","t":"select","v":"A"},{"k":"net_type","t":"select","v":"all"}],"conditionsDisplayValue":{"app_id":"手百大字版"},"resourceHash":"c_1013e-2snvzla2-1j7b54","pageHash":"r_1013e-cdbk97i6-oq99mj"}
+        # body = {"conditions":[{"k":"dateRange","t":"dateRange","v":"2023-05-02,2023-05-08"},{"k":"event_day","t":"date","v":"2023-05-08"},{"k":"compare_event_day","t":"date","v":"2023-05-08"},{"k":"app_id","t":"select","v":"12117"},{"k":"search_page","t":"select","v":"all"},{"k":"soft_version","t":"select","v":"2.1.0.11"},{"k":"net_type","t":"select","v":"all"},{"k":"device_level","t":"select","v":"all"},{"k":"pd","t":"select","v":"all"},{"k":"atn","t":"select","v":"all"},{"k":"status","t":"select","v":"all"}],"conditionsDisplayValue":{"app_id":"手百大字版"},"resourceHash":"c_1013e-c254mx61-kepbl7","pageHash":"r_1013e-8ad82r3p-o8ll5x"}
         body = {"conditions": [{"k": "dateRange", "t": "dateRange", "v": date},
                                {"k": "event_day", "t": "date", "v": end_date},
                                {"k": "compare_event_day", "t": "date", "v": end_date},
-                               {"k": "app_id", "t": "select", "v": "12117"}, {"k": "os", "t": "select", "v": "ios"},
-                               {"k": "search_page", "t": "select", "v": "shybird"},
+                               {"k": "app_id", "t": "select", "v": "12117"},
+                               {"k": "search_page", "t": "select", "v": "all"},
                                {"k": "soft_version", "t": "select", "v": "2.1.0.11"},
-                               {"k": "pageFromType", "t": "select", "v": "A"},
-                               {"k": "net_type", "t": "select", "v": "all"}],
-                "conditionsDisplayValue": {"app_id": "手百大字版"}, "resourceHash": "c_1013e-2snvzla2-1j7b54",
-                "pageHash": "r_1013e-cdbk97i6-oq99mj"}
+                               {"k": "net_type", "t": "select", "v": "all"},
+                               {"k": "device_level", "t": "select", "v": "all"}, {"k": "pd", "t": "select", "v": "all"},
+                               {"k": "atn", "t": "select", "v": "all"}, {"k": "status", "t": "select", "v": "all"}],
+                "conditionsDisplayValue": {"app_id": "手百大字版"}, "resourceHash": "c_1013e-c254mx61-kepbl7",
+                "pageHash": "r_1013e-8ad82r3p-o8ll5x"}
 
         # 请求方式
         resp = requests.post(url, json=body, headers=header, timeout=10, verify=False)
@@ -119,7 +119,6 @@ class Matrix(object):
             print("")
             print("日期", row.event_day)
             print("页面", row.search_page)
-            print("页面来源", row.page_from_type)
             print("版本", row.soft_version)
             print("80分位", row.quantile_80)
             print("PV", row.pv)
@@ -127,7 +126,7 @@ class Matrix(object):
         # print("dataRow = ", dataRow)
         num = num / len(dataRow)
         print("")
-        print("Tomas - 搜索百家号落地页7日均值", num)
+        print("Tomas - 搜索H5落地页7日均值", num)
 
 if __name__ == '__main__':
     ma = Matrix()

@@ -19,7 +19,7 @@ from Models.search import Search
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-class SearchTomasDataRow:
+class SearchTomasDataRow(object):
     def __init__(self, dicti):
         # self.key0 = None
         self.eventDayay = dicti["event_day"]
@@ -27,7 +27,7 @@ class SearchTomasDataRow:
         self.onpagetimeP80 = dicti["onpagetimeP80"]
         self.pv = dicti["pv"]
 
-class SearchTomasData:
+class SearchTomasData(object):
     def __init__(self, dicti):
         self.rows = dicti["rows"] # arr
 
@@ -37,18 +37,18 @@ class SearchTomasData:
             tmpArr.append(tomasDataRow)
         self.rows = tmpArr
 
-class SearchTomas:
+class SearchTomas(object):
     def __init__(self, dicti):
         self.data = dicti["data"] # dict
 
         tomasData = SearchTomasData(self.data)
         self.data = tomasData # model
 
-class Matrix:
+class Matrix(object):
     def __init__(self):
         pass
 
-    def requestData(self):
+    def request_data(self):
         today = DT.date.today()
         yesterday = today - DT.timedelta(days=1)
         # 相对于昨天的6天前日期
@@ -123,8 +123,8 @@ class Matrix:
         # print("dataRow = ", dataRow)
         num = num / len(dataRow)
         print("")
-        print("Tomas - H5搜索结果页速度7日均值", num)
+        print("Tomas - 搜索H5结果页速度7日均值", num)
 
 if __name__ == '__main__':
     ma = Matrix()
-    ma.requestData()
+    ma.request_data()

@@ -1,4 +1,4 @@
-class SearchDataCol:
+class SearchDataCol(object):
     # name = ""
     # id = ""
     # accuracy = 0
