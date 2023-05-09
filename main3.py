@@ -96,7 +96,7 @@ class Matrix(object):
         content = str(resp.content, 'utf8')
         contentDict = json.loads(content)
 
-        print('------c = ', content)
+        # print('------c = ', content)
         # print('------contentDict = ', contentDict['data']['rows'][0])
 
         search = SearchTomas(contentDict)
@@ -114,12 +114,12 @@ class Matrix(object):
 
         num = 0
         for row in dataRow:
-            print("")
-            print("日期", row.event_day)
-            print("页面", row.search_page)
-            print("版本", row.soft_version)
-            print("80分位", row.quantile_80)
-            print("PV", row.pv)
+            # print("")
+            # print("日期", row.event_day)
+            # print("页面", row.search_page)
+            # print("版本", row.soft_version)
+            # print("80分位", row.quantile_80)
+            # print("PV", row.pv)
             num += row.quantile_80
         # print("dataRow = ", dataRow)
         num = num / len(dataRow)

@@ -112,11 +112,11 @@ class Matrix(object):
         # print("dataRow = ", dataRow)
         num = 0
         for row in dataRow:
-            print("")
-            print("日期", row.eventDayay)
-            print("版本", row.softVersion)
-            print("80分位", row.onpagetimeP80)
-            print("PV", row.pv)
+            # print("")
+            # print("日期", row.eventDayay)
+            # print("版本", row.softVersion)
+            # print("80分位", row.onpagetimeP80)
+            # print("PV", row.pv)
             num += row.onpagetimeP80
         # print("dataRow = ", dataRow)
         num = num / len(dataRow)
