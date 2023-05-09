@@ -97,9 +97,7 @@ class Matrix(object):
         contentDict = json.loads(content)
 
         print('------c = ', content)
-
         # print('------contentDict = ', contentDict['data']['rows'][0])
-
 
         search = SearchTomas(contentDict)
         # print("search = ", search)
