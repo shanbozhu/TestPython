@@ -64,6 +64,11 @@ class Matrix(object):
         for row in data_row:
             if row.name == "对比":
                 continue
+            if row.name == "版本-Lite" or row.name == "版本-主线":
+                print("")
+                print(row.name, "iOS")
+                print("版本", row.key0.split('/')[1])
+                continue
             print("")
             print(row.name, "iOS")
             print("搜索结果页", row.key0.split('/')[1])
