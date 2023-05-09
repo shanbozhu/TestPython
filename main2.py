@@ -78,12 +78,13 @@ class Matrix(object):
 
         # 请求体
         # body = {"conditions":[{"k":"dateRange","t":"dateRange","v":"2023-05-02,2023-05-08"},{"k":"event_day","t":"date","v":"2023-05-08"},{"k":"compare_event_day","t":"date","v":"2023-05-08"},{"k":"app_id","t":"select","v":"12117"},{"k":"os","t":"select","v":"ios"},{"k":"search_page","t":"select","v":"shybird"},{"k":"soft_version","t":"select","v":"2.1.0.11"},{"k":"pageFromType","t":"select","v":"A"},{"k":"net_type","t":"select","v":"all"}],"conditionsDisplayValue":{"app_id":"手百大字版"},"resourceHash":"c_1013e-2snvzla2-1j7b54","pageHash":"r_1013e-cdbk97i6-oq99mj"}
+        version = "2.1.0.11"
         body = {"conditions": [{"k": "dateRange", "t": "dateRange", "v": date},
                                {"k": "event_day", "t": "date", "v": end_date},
                                {"k": "compare_event_day", "t": "date", "v": end_date},
                                {"k": "app_id", "t": "select", "v": "12117"}, {"k": "os", "t": "select", "v": "ios"},
                                {"k": "search_page", "t": "select", "v": "shybird"},
-                               {"k": "soft_version", "t": "select", "v": "2.1.0.11"},
+                               {"k": "soft_version", "t": "select", "v": version},
                                {"k": "pageFromType", "t": "select", "v": "A"},
                                {"k": "net_type", "t": "select", "v": "all"}],
                 "conditionsDisplayValue": {"app_id": "手百大字版"}, "resourceHash": "c_1013e-2snvzla2-1j7b54",
