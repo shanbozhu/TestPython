@@ -15,7 +15,7 @@ import requests
 import urllib3
 import json
 import random
-import datetime as DT
+import datetime as dt
 from Models.search import Search
 import logging
 
@@ -26,10 +26,10 @@ class Matrix(object):
         pass
 
     def request_data(self):
-        today = DT.date.today()
-        yesterday = today - DT.timedelta(days=1)
+        today = dt.date.today()
+        yesterday = today - dt.timedelta(days=1)
         # 相对于昨天的6天前日期
-        week_ago = yesterday - DT.timedelta(days=6)
+        week_ago = yesterday - dt.timedelta(days=6)
         end_date = str(yesterday)
         start_date = str(week_ago)
         date = start_date + "," + end_date
