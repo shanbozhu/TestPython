@@ -53,7 +53,7 @@ class Matrix(object):
         end_date = str(yesterday)
         start_date = str(week_ago)
         date = start_date + "," + end_date
-        print("\"大字版\"查询日期:", date)
+        # print("\"大字版\"查询日期:", date)
 
         # 请求路径,请求参数
         url = "http://performance.baidu.com/performance/activeuser/activetrend"
@@ -74,7 +74,7 @@ class Matrix(object):
 
         # 解码
         content = str(resp.content, 'utf8')
-        print(content)
+        # print(content)
         json_dict = json.loads(content)
         return json_dict["data"]["list"][0]["app_version"]
 
