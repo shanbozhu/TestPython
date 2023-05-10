@@ -108,8 +108,9 @@ class Matrix(object):
             # print("PV", row.pv)
             num += row.quantile_80
         num = num / len(data_row)
-        print("")
+        # print("")
         print("Tomas - 百家号落地页速度7日均值", num, ", 最大pv版本", version)
+        print("")
 
 if __name__ == '__main__':
     ma = Matrix()

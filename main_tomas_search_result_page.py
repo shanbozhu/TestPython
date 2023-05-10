@@ -141,8 +141,9 @@ class Matrix(object):
             # print("PV", row.pv)
             num += row.onpagetimeP80
         num = num / len(data_row)
-        print("")
+        # print("")
         print("Tomas - H5结果页速度7日均值", num, ", 最大pv版本", version)
+        print("")
 
 if __name__ == '__main__':
     ma = Matrix()

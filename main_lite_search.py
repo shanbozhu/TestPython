@@ -30,7 +30,7 @@ class Matrix(object):
         end_date = str(yesterday)
         start_date = str(week_ago)
         date = start_date + "," + end_date
-        print("\"极速版\"查询日期:", date)
+        print("\"极速版和主板\"查询日期:", date)
 
         # 请求路径,请求参数
         url = "https://sugar.baidu-int.com/api/report/r_1013e-962sbne9-k6rm8k/chart-data/c_1013e-3x5owwj5-1d246m"
@@ -74,6 +74,7 @@ class Matrix(object):
             print("搜索结果页", row.key0.split('/')[1])
             print("搜索H5落地页", row.key1.split('/')[1])
             print("搜索NA落地页（百家号）", row.key2.split('/')[1])
+        print("==============================")
 
 if __name__ == '__main__':
     ma = Matrix()
