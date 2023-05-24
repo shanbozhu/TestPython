@@ -1,9 +1,6 @@
 from Models.search_data import SearchData
 
 class Search(object):
-    # status = 0
-    # msg = ""
-    # data = {}
 
     def __init__(self, dicti):
         self.status = dicti["status"]

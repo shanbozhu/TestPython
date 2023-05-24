@@ -2,8 +2,6 @@ from Models.search_data_col import SearchDataCol
 from Models.search_data_row import  SearchDataRow
 
 class SearchData(object):
-    # columns = []
-    # rows = []
 
     def __init__(self, dicti):
         self.columns = dicti["columns"] # arr
