@@ -132,7 +132,8 @@ class Matrix(object):
             num += row.onpagetimeP80
         num = num / len(data_row)
         # print("")
-        print("Tomas - H5结果页速度7日均值", num, ", 最大pv版本", version)
+        #print("Tomas - H5结果页速度7日均值", round(num, 2), ", 最大pv版本", version)
+        print("Tomas - H5结果页速度7日均值", str(round(num)) + "ms", ", 最大pv版本", version)
         print("")
 
 if __name__ == '__main__':
