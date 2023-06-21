@@ -45,7 +45,7 @@ class Matrix(object):
     def __init__(self):
         pass
 
-    def request_version(self):
+    def request_version(self, product):
         today = dt.date.today()
         yesterday = today - dt.timedelta(days=1)
         # 相对于昨天的6天前日期
@@ -67,7 +67,7 @@ class Matrix(object):
         # 请求参数
         end_time = yesterday.strftime("%Y%m%d")
         params = {"app_version": "", "channel": "all", "end_time": end_time, "groupby": "event_day,app_version",
-                  "hms_flag": "3", "orderby": "event_day,pv", "os_name": "ios", "proc_bit": "all", "product": "tomas",
+                  "hms_flag": "3", "orderby": "event_day,pv", "os_name": "ios", "proc_bit": "all", "product": product,
                   "sort": "DESC", "start_time": end_time}
         # 请求方式
         resp = requests.get(url, params=params, headers=header, timeout=10, verify=False)
@@ -79,7 +79,7 @@ class Matrix(object):
         return json_dict["data"]["list"][0]["app_version"]
 
 
-    def request_data(self):
+    def request_data(self, product, v_appid, app_id):
         # version = self.request_version()
         # print(version)
 
@@ -90,7 +90,7 @@ class Matrix(object):
         end_date = str(yesterday)
         start_date = str(week_ago)
         date = start_date + "," + end_date
-        print("\"大字版\"查询日期:", date)
+        print(app_id, "查询日期:", date)
 
         # 请求路径,请求参数
         url = "https://sugar.baidu-int.com/api/reportShare/325ba1e2445bc3cc51ac10d906d13dde/report/r_1013e-1ntg07be-kr4bje/chart-data/c_1013e-2s170c5r-k49mmb"
@@ -109,8 +109,8 @@ class Matrix(object):
         }
 
         # 请求体
-        version = self.request_version()
-        body = {"conditions":[{"k":"dateRange","t":"dateRange","v":date},{"k":"event_day","t":"date","v":end_date},{"k":"compare_event_day","t":"date","v":end_date},{"k":"app_id","t":"select","v":"12117"},{"k":"search_page","t":"select","v":"all"},{"k":"search_source","t":"select","v":"all"},{"k":"soft_version","t":"select","v":version},{"k":"net_type","t":"select","v":"all"},{"k":"device_level","t":"select","v":"all"}],"conditionsDisplayValue":{"app_id":"手百大字版"},"o":"performance.baidu.com","resourceHash":"c_1013e-2s170c5r-k49mmb","pageHash":"r_1013e-1ntg07be-kr4bje"}
+        version = self.request_version(product=product)
+        body = {"conditions":[{"k":"dateRange","t":"dateRange","v":date},{"k":"event_day","t":"date","v":end_date},{"k":"compare_event_day","t":"date","v":end_date},{"k":"app_id","t":"select","v":v_appid},{"k":"search_page","t":"select","v":"all"},{"k":"search_source","t":"select","v":"all"},{"k":"soft_version","t":"select","v":version},{"k":"net_type","t":"select","v":"all"},{"k":"device_level","t":"select","v":"all"}],"conditionsDisplayValue":{"app_id":app_id},"o":"performance.baidu.com","resourceHash":"c_1013e-2s170c5r-k49mmb","pageHash":"r_1013e-1ntg07be-kr4bje"}
 
         # 请求方式
         resp = requests.post(url, json=body, headers=header, timeout=10, verify=False)
@@ -132,10 +132,12 @@ class Matrix(object):
             num += row.onpagetimeP80
         num = num / len(data_row)
         # print("")
-        #print("Tomas - H5结果页速度7日均值", round(num, 2), ", 最大pv版本", version)
-        print("Tomas - H5结果页速度7日均值", str(round(num)) + "ms", ", 最大pv版本", version)
+        #print("H5结果页速度7日均值", round(num, 2), ", 最大pv版本", version)
+        print("H5结果页速度7日均值", str(round(num)) + "ms", ", 最大pv版本", version)
         print("")
 
 if __name__ == '__main__':
     ma = Matrix()
-    ma.request_data()
+    ma.request_data(product="tomas", v_appid="12117", app_id="手百大字版")
+    ma.request_data(product="baiduboxlite", v_appid="10001", app_id="手百lite")
+    ma.request_data(product="baiduboxapp", v_appid="1", app_id="手百")
