@@ -104,7 +104,7 @@ class Matrix(object):
 if __name__ == '__main__':
     ma = Matrix()
     # ma.request_data()
-    ma.request_data(product="tomas", v_appid="12117", app_id="手百大字版")
     ma.request_data(product="baiduboxlite", v_appid="10001", app_id="手百lite")
+    ma.request_data(product="tomas", v_appid="12117", app_id="手百大字版")
     ma.request_data(product="baiduboxapp", v_appid="1", app_id="手百")
     print("==============================")
