@@ -48,7 +48,7 @@ class Matrix(object):
     def __init__(self):
         pass
 
-    def request_data(self):
+    def request_data(self, product, v_appid, app_id):
         today = dt.date.today()
         yesterday = today - dt.timedelta(days=1)
         # 相对于昨天的6天前日期
@@ -56,7 +56,7 @@ class Matrix(object):
         end_date = str(yesterday)
         start_date = str(week_ago)
         date = start_date + "," + end_date
-        print("\"大字版\"查询日期:", date)
+        print(app_id, "查询日期:", date)
 
         # 请求路径,请求参数
         url = "https://sugar.baidu-int.com/api/reportShare/c1ffe92cff8d2f20d8e62397bba9d84f/report/r_1013e-cdbk97i6-oq99mj/chart-data/c_1013e-2snvzla2-1j7b54"
@@ -75,8 +75,8 @@ class Matrix(object):
         }
 
         # 请求体
-        version = main_tomas_search_result_page.Matrix().request_version()
-        body = {"conditions":[{"k":"dateRange","t":"dateRange","v":date},{"k":"event_day","t":"date","v":end_date},{"k":"compare_event_day","t":"date","v":end_date},{"k":"app_id","t":"select","v":"12117"},{"k":"os","t":"select","v":"ios"},{"k":"search_page","t":"select","v":"shybird"},{"k":"soft_version","t":"select","v":version},{"k":"pageFromType","t":"select","v":"A"},{"k":"net_type","t":"select","v":"all"}],"conditionsDisplayValue":{"app_id":"手百大字版"},"o":"performance.baidu.com","resourceHash":"c_1013e-2snvzla2-1j7b54","pageHash":"r_1013e-cdbk97i6-oq99mj"}
+        version = main_tomas_search_result_page.Matrix().request_version(product=product)
+        body = {"conditions":[{"k":"dateRange","t":"dateRange","v":date},{"k":"event_day","t":"date","v":end_date},{"k":"compare_event_day","t":"date","v":end_date},{"k":"app_id","t":"select","v":v_appid},{"k":"os","t":"select","v":"ios"},{"k":"search_page","t":"select","v":"shybird"},{"k":"soft_version","t":"select","v":version},{"k":"pageFromType","t":"select","v":"A"},{"k":"net_type","t":"select","v":"all"}],"conditionsDisplayValue":{"app_id":app_id},"o":"performance.baidu.com","resourceHash":"c_1013e-2snvzla2-1j7b54","pageHash":"r_1013e-cdbk97i6-oq99mj"}
 
         # 请求方式
         resp = requests.post(url, json=body, headers=header, timeout=10, verify=False)
@@ -100,9 +100,12 @@ class Matrix(object):
             num += row.quantile_80
         num = num / len(data_row)
         # print("")
-        print("Tomas - 百家号落地页速度7日均值", str(round(num)) + "ms", ", 最大pv版本", version)
+        print("百家号落地页速度7日均值", str(round(num)) + "ms", ", 最大pv版本", version)
         print("")
 
 if __name__ == '__main__':
     ma = Matrix()
-    ma.request_data()
+    # ma.request_data()
+    ma.request_data(product="tomas", v_appid="12117", app_id="手百大字版")
+    ma.request_data(product="baiduboxlite", v_appid="10001", app_id="手百lite")
+    ma.request_data(product="baiduboxapp", v_appid="1", app_id="手百")
