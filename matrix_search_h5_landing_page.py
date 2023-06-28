@@ -13,7 +13,7 @@ import urllib3
 import json
 import random
 import datetime as dt
-import main_tomas_search_result_page
+import matrix_search_result_page
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -74,7 +74,7 @@ class Matrix(object):
         }
 
         # 请求体
-        version = main_tomas_search_result_page.Matrix().request_version(product=product)
+        version = matrix_search_result_page.Matrix().request_version(product=product)
         body = {"conditions":[{"k":"dateRange","t":"dateRange","v":date},{"k":"event_day","t":"date","v":end_date},{"k":"compare_event_day","t":"date","v":end_date},{"k":"app_id","t":"select","v":v_appid},{"k":"search_page","t":"select","v":"all"},{"k":"soft_version","t":"select","v":version},{"k":"net_type","t":"select","v":"all"},{"k":"device_level","t":"select","v":"all"},{"k":"pd","t":"select","v":"all"},{"k":"atn","t":"select","v":"all"},{"k":"status","t":"select","v":"all"}],"conditionsDisplayValue":{"app_id":app_id},"o":"performance.baidu.com","resourceHash":"c_1013e-c254mx61-kepbl7","pageHash":"r_1013e-8ad82r3p-o8ll5x"}
 
         # 请求方式
