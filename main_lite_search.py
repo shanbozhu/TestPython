@@ -14,7 +14,7 @@ import urllib3
 import json
 import random
 import datetime as dt
-from Models.search import Search
+from models.search import Search
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 

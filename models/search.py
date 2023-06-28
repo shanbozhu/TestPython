@@ -1,4 +1,4 @@
-from Models.search_data import SearchData
+from models.search_data import SearchData
 
 class Search(object):
 
