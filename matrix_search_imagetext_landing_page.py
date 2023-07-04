@@ -98,7 +98,11 @@ class Matrix(object):
             # print("版本", row.soft_version)
             # print("80分位", row.quantile_80)
             # print("PV", row.pv)
-            if row.quantile_80 <= 0 or (row.pv < 10000 and product != "tomas"):
+            if product == "baiduboxlite" and (row.quantile_80 <= 0 or row.pv < 10000):
+                continue
+            if product == "tomas" and row.quantile_80 <= 0:
+                continue
+            if product == "baiduboxapp" and (row.quantile_80 <= 0 or row.pv < 10000):
                 continue
             num += row.quantile_80
             i = i + 1

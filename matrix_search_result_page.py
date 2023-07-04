@@ -130,7 +130,7 @@ class Matrix(object):
             # print("版本", row.soft_version)
             # print("80分位", row.onpagetimeP80)
             # print("PV", row.pv)
-            if row.pv < 10000:
+            if row.onpagetimeP80 <= 0 or row.pv < 10000:
                 continue
             num += row.onpagetimeP80
             i = i + 1
