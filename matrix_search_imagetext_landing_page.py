@@ -113,7 +113,7 @@ class Matrix(object):
         # num = num / len(data_row)
         num = num / i
         # print("")
-        print("百家号落地页速度7日均值", str(round(num)) + "ms", ", 最大pv版本", version)
+        print("百家号落地页速度7日平均值", str(round(num)) + "ms", ", 最大pv版本", version)
         print("")
 
 if __name__ == '__main__':

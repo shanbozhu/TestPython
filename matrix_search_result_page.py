@@ -141,8 +141,8 @@ class Matrix(object):
         # num = num / len(data_row)
         num = num / i
         # print("")
-        #print("H5结果页速度7日均值", round(num, 2), ", 最大pv版本", version)
-        print("H5结果页速度7日均值", str(round(num)) + "ms", ", 最大pv版本", version)
+        #print("H5结果页速度7日平均值", round(num, 2), ", 最大pv版本", version)
+        print("H5结果页速度7日平均值", str(round(num)) + "ms", ", 最大pv版本", version)
         print("")
 
 if __name__ == '__main__':
