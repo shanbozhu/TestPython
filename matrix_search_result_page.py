@@ -16,6 +16,10 @@ import datetime as dt
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
+product_baiduboxlite = "baiduboxlite"
+product_tomas = "tomas"
+product_baiduboxapp = "baiduboxapp"
+
 class SearchTomasDataRow(object):
     def __init__(self, dicti):
         # self.key0 = None
@@ -143,7 +147,7 @@ class Matrix(object):
 
 if __name__ == '__main__':
     ma = Matrix()
-    ma.request_data(product="baiduboxlite", v_appid="10001", app_id="手百lite")
-    ma.request_data(product="tomas", v_appid="12117", app_id="手百大字版")
-    ma.request_data(product="baiduboxapp", v_appid="1", app_id="手百")
+    ma.request_data(product=product_baiduboxlite, v_appid="10001", app_id="手百lite")
+    ma.request_data(product=product_tomas, v_appid="12117", app_id="手百大字版")
+    ma.request_data(product=product_baiduboxapp, v_appid="1", app_id="手百")
     print("==============================")

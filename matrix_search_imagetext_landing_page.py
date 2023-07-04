@@ -17,6 +17,10 @@ import matrix_search_result_page
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
+product_baiduboxlite = "baiduboxlite"
+product_tomas = "tomas"
+product_baiduboxapp = "baiduboxapp"
+
 class SearchTomasDataRow(object):
     def __init__(self, dicti):
         # self.key0 = None
@@ -98,11 +102,11 @@ class Matrix(object):
             # print("版本", row.soft_version)
             # print("80分位", row.quantile_80)
             # print("PV", row.pv)
-            if product == "baiduboxlite" and (row.quantile_80 <= 0 or row.pv < 10000):
+            if product == product_baiduboxlite and (row.quantile_80 <= 0 or row.pv < 10000):
                 continue
-            if product == "tomas" and row.quantile_80 <= 0:
+            if product == product_tomas and row.quantile_80 <= 0:
                 continue
-            if product == "baiduboxapp" and (row.quantile_80 <= 0 or row.pv < 10000):
+            if product == product_baiduboxapp and (row.quantile_80 <= 0 or row.pv < 10000):
                 continue
             num += row.quantile_80
             i = i + 1
@@ -115,7 +119,7 @@ class Matrix(object):
 if __name__ == '__main__':
     ma = Matrix()
     # ma.request_data()
-    ma.request_data(product="baiduboxlite", v_appid="10001", app_id="手百lite")
-    ma.request_data(product="tomas", v_appid="12117", app_id="手百大字版")
-    ma.request_data(product="baiduboxapp", v_appid="1", app_id="手百")
+    ma.request_data(product=product_baiduboxlite, v_appid="10001", app_id="手百lite")
+    ma.request_data(product=product_tomas, v_appid="12117", app_id="手百大字版")
+    ma.request_data(product=product_baiduboxapp, v_appid="1", app_id="手百")
     print("==============================")
