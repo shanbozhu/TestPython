@@ -123,14 +123,19 @@ class Matrix(object):
         data_row = search.data.rows
 
         num = 0
+        i = 0
         for row in data_row:
             # print("")
             # print("日期", row.event_day)
             # print("版本", row.soft_version)
             # print("80分位", row.onpagetimeP80)
             # print("PV", row.pv)
+            if row.pv < 10000:
+                continue
             num += row.onpagetimeP80
-        num = num / len(data_row)
+            i = i + 1
+        # num = num / len(data_row)
+        num = num / i
         # print("")
         #print("H5结果页速度7日均值", round(num, 2), ", 最大pv版本", version)
         print("H5结果页速度7日均值", str(round(num)) + "ms", ", 最大pv版本", version)

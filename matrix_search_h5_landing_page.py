@@ -88,6 +88,7 @@ class Matrix(object):
         data_row = search.data.rows
 
         num = 0
+        i = 0
         for row in data_row:
             # print("")
             # print("日期", row.event_day)
@@ -95,8 +96,12 @@ class Matrix(object):
             # print("版本", row.soft_version)
             # print("80分位", row.quantile_80)
             # print("PV", row.pv)
+            if row.quantile_80 <= 0:
+                continue
             num += row.quantile_80
-        num = num / len(data_row)
+            i = i + 1
+        # num = num / len(data_row)
+        num = num / i
         # print("")
         print("H5落地页速度7日均值", str(round(num)) + "ms", ", 最大pv版本", version)
         print("")
