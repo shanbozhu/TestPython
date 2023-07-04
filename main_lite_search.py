@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-File: myrequest.py
+File: main_lite_search.py
 Author: zhushanbo
 Date: 2023/4/21
 Description:
