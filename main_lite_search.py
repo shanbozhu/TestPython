@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 """
@@ -12,7 +12,6 @@ Description:
 import requests
 import urllib3
 import json
-import random
 import datetime as dt
 from models.search import Search
 
