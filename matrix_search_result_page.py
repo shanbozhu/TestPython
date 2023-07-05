@@ -89,7 +89,7 @@ class Matrix(object):
         resp = requests.get(url, params=params, headers=header, timeout=10, verify=False)
 
         # 解码
-        content = str(resp.content, 'utf8')
+        content = str(resp.content, 'utf-8')
         # print(content)
         json_dict = json.loads(content)
         return json_dict["data"]["list"][0]["app_version"]
@@ -132,7 +132,7 @@ class Matrix(object):
         resp = requests.post(url, json=body, headers=header, timeout=10, verify=False)
 
         # 解码
-        content = str(resp.content, 'utf8')
+        content = str(resp.content, 'utf-8')
         content_dict = json.loads(content)
 
         search = SearchTomas(content_dict)
