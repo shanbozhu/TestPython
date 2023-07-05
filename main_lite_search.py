@@ -9,11 +9,24 @@ Description:
 极速版 - 搜索结果页\h5落地页\百家号落地页上屏耗时
 """
 
-import requests
-import urllib3
 import json
 import datetime as dt
 from models.search import Search
+
+import os # os为内置模块，是一定存在的
+count = 3 # 最大检测次数，即第一次检测不存在则安装，若安装失败，则再来一次
+while count:
+    try:
+        import requests # 三方模块
+        import urllib3
+        # print ('模块已安装')
+        break
+    except:
+        print ('模块未安装，现在开始安装')
+        os.system('pip3 install requests -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com')
+        os.system('pip3 install urllib3 -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com')
+        count -= 1
+        continue
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 

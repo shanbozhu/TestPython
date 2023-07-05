@@ -11,5 +11,3 @@ class SearchDataRow(object):
         self.key3 = dicti["key3"]
         self.key4 = dicti["key4"]
         self.key5 = dicti["key5"]
-        # self.name = dicti["name"]
-        # self.name = dicti["name"]
