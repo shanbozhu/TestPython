@@ -12,4 +12,3 @@ class Search(object):
 
         search_data = SearchData(self.data)
         self.data = search_data # model
-        # print("search_data = ", search_data.columns)
