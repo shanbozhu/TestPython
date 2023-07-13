@@ -1,3 +1,2 @@
-f = open("my_file.txt",'r')
-byt = f.readlines()
-print(byt)
+with open('a.txt', 'a') as f:
+    f.write("\nPython教程")
