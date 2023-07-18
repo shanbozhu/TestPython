@@ -113,6 +113,10 @@ class Matrix(object):
             num += row.quantile_80
             i = i + 1
         # num = num / len(data_row)
+        if i == 0:
+            print("无有效数据")
+            print("")
+            return
         num = num / i
         print("百家号落地页速度7日平均值", str(round(num)) + "ms", ", 最大pv版本", version)
         print("")
