@@ -8,4 +8,4 @@ suffix=".png"
 
 qrencode -o "${prefix}${time}${suffix}" -s 10 -m 1 "zhushanbo"
 open ${prefix}
-echo "hell"
+echo "hello"
