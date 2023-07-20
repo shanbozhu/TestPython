@@ -3,27 +3,27 @@ python test.py --input 3 --output 4
 python test.py -i 3 -o 4
 """
 
-import argparse
-parser = argparse.ArgumentParser()
-parser.add_argument('--input')
-parser.add_argument('--output')
-args = parser.parse_args()
-print(args.aa)
-print(args.bb)
+# import argparse
+# parser = argparse.ArgumentParser()
+# parser.add_argument('--input')
+# parser.add_argument('--output')
+# args = parser.parse_args()
+# print(args.input)
+# print(args.output)
 
 
 import sys
 import getopt
 
-argv0 = sys.argv[0]
-argv1 = sys.argv[1]
-argv2 = sys.argv[2]
-print(argv0)
-print(argv1)
-print(argv2)
+# argv0 = sys.argv[0]
+# argv1 = sys.argv[1]
+# argv2 = sys.argv[2]
+# print(argv0)
+# print(argv1)
+# print(argv2)
 
 
-opts, args = getopt.getopt(sys.argv[1:], "hi:o:", ["input=", "output="])
+opts, args = getopt.getopt(sys.argv[1:], "hi:o:", ["input=", "output=", "help"])
 input_file = ""
 output_file = ""
 for op, value in opts:
