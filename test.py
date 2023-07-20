@@ -1,21 +1,14 @@
+import re, os
+
+
 def alter(file, old_str, new_str):
-    # """
-    # 替换文件中的字符串
-    # :param file:文件名
-    # :param old_str:就字符串
-    # :param new_str:新字符串
-    # :return:
-    #
-    # """
-    file_data = ""
-    with open(file, "r", encoding="utf-8") as f:
-        for line in f:
-            if old_str in line:
-                line = line.replace(old_str, new_str)
-            file_data += line
-    with open(file, "w", encoding="utf-8") as f:
-        f.write(file_data)
+    str = file + ".bak"
+    print(str)
+    with open(file, "r", encoding="utf-8") as f1, open("%s.bak" % file, "w", encoding="utf-8") as f2:
+        for line in f1:
+            print(line, end="")
+            f2.write(re.sub(old_str, new_str, line))
+    os.remove(file)
+    os.rename("%s.bak" % file, file)
 
-
-alter("my_file.txt", "中文网", "abc")
-# alter()
+alter("my_file.txt", "aa", "password")
