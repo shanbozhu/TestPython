@@ -1,2 +1,0 @@
-C语言passwordpassword1
-http://c.biancheng.net
