@@ -1,11 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>11111</title>
-    <script type="text/javascript" src="test.js"></script>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+	$("button").click(function(){
+		$.post("https://www.runoob.com/try/ajax/demo_test_post.php",{
+			name:"菜鸟222222教程",
+			url:"http://www.runoob.com"
+		},
+		function(data,status){
+			alert("数据: \n" + data + "\n状态: " + status);
+		});
+	});
+});
+</script>
 </head>
 <body>
+
+<button>发送一个 HTTP POST 请求页面并获取返回内容</button>
 
 </body>
 </html>
