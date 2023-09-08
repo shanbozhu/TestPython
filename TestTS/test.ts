@@ -1,3 +1,5 @@
+#!/usr/bin/env ts-node
+
 const hello : string = "Hello Wor呜呜呜呜我把bld!";
 console.log(hello)
 console.info('Hello TS')
