@@ -1,3 +1,1 @@
-**终端执行命令:**
-
-**./msearch_performance.py**
+**Pycharm激活码:** https://www.haah.net/jetbrains
