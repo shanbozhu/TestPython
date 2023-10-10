@@ -79,7 +79,7 @@ class Matrix(object):
         # 请求头
         header = {
             "Content-Type": "application/json",
-            "Cookie": "SECURE_UUAP_P_TOKEN=PT-867494923821858816-cC5Wv6wHxh-uuap; SECURE_BSG_B_TOKEN=zEWgXpxO4xvG/2juMkPTf+B8C63lX09TVjyUebNzbIJ57tks6GWyFhX6E8AHb5Ye0yrkH8jsplnBAYYlyvTVzA==",
+            "Cookie": "SECURE_BSG_B_TOKEN=ttOPg91UZP4AnR+HVm8/jr1dH1K9I3fCE6cKxysAL/57spKYE3X22BawQCUJC1XOxRrDq6z5Cw9iyeXdlbL/Ig==; crosssousername=zhushanbo; SECURE_UUAP_P_TOKEN=PT-915993977087942657-5XMN99yZmn-uuap; crosgwusercred=E5De1hiBpJjSXJJbXCQzj1F9JWhRYCdc-DzcRCsdcUUPxnH1xIkAb9TBrgFOZYIYE9FyBDF2Pjhhhd9UmjDJHwe16b37e1c0f18c8eabf0e65b686ff7e6",
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
         }
         # 请求体
