@@ -16,6 +16,7 @@ Please give me more support.
 I will keep it updated.'''
 print(s2)
 
+# r原生字符串，自带转义
 rstr = r'D:\Program Files\Python 3.8\python.exe'
 print(rstr)
 rstr = r'D:\Program Files\Python 3.8\python.exe' '\\'
@@ -82,3 +83,20 @@ t2 =  time.gmtime()
 print(t1 == t2) # 输出True
 print(t1 is t2) # 输出False
 print(t1 is not t2) # 输出True
+
+age = 20
+height = 175
+if age >= 18 and age <= 30 and height >= 170 and height <= 185:
+    print("恭喜，你符合报考飞行员的条件")
+else:
+    print("抱歉，你不符合报考飞行员的条件")
+
+# 在 Python 中，and 和 or 不一定会计算右边表达式的值，有时候只计算左边表达式的值就能得到最终结果。
+# 另外，and 和 or 运算符会将其中一个表达式的 值 作为最终结果，而不是将 True 或者 False 作为最终结果。
+# 该"其中一个表达式"决定了逻辑运算的最终结果，遵守 逻辑运算短路特性
+print(100 and 200) # 200
+print(45 and 0) # 0
+print("" or "http://c.biancheng.net/python/") # http://c.biancheng.net/python/
+print(18.5 or "http://c.biancheng.net/python/") # 18.5
+
+
