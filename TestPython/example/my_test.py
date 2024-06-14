@@ -99,4 +99,16 @@ print(45 and 0) # 0
 print("" or "http://c.biancheng.net/python/") # http://c.biancheng.net/python/
 print(18.5 or "http://c.biancheng.net/python/") # 18.5
 
+a = 10
+b = 5
+if a > b:
+    max = a
+else:
+    max = b
+print(max)
 
+# 这是一种类似于其它编程语言中三目运算符 ?: 的写法。Python 是一种极简主义的编程语言，它没有引入 ?: 这个新的运算符，而是使用已有的 if else 关键字来实现相同的功能。
+a = 20
+b = 10
+max = a if a > b else b
+print(max)
