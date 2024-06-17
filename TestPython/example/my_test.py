@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-## String
+########## str
 
 s1 = 'I\'m a great coder!'
 print(s1)
@@ -17,12 +17,12 @@ I will keep it updated.'''
 print(s2)
 
 # r原生字符串，自带转义
-rstr = r'D:\Program Files\Python 3.8\python.exe'
-print(rstr)
-rstr = r'D:\Program Files\Python 3.8\python.exe' '\\'
-print(rstr)
+rs = r'D:\Program Files\Python 3.8\python.exe'
+print(rs)
+rs = r'D:\Program Files\Python 3.8\python.exe' '\\'
+print(rs)
 
-## print()
+########## print()
 
 user_name = 'Charlie'
 user_age = 8
@@ -47,39 +47,39 @@ age = 8
 url = "http://c.biancheng.net/"
 print("%s已经%d岁了，它的网址是%s。" % (name, age, url))
 
-str1 = "Oct: \061\062\063"
-str2 = "Hex: \x31\x32\x33\x78\x79\x7A"
-print(str1)
-print(str2)
+s1 = "Oct: \061\062\063"
+s2 = "Hex: \x31\x32\x33\x78\x79\x7A"
+print(s1)
+print(s2)
 
-## 类型转换
+########## 类型转换
 
 height = 70.0
 print("您的身高" + str(height))
 
-## 运算符
+########## 运算符
 
 # 整数不能除尽
-print("23/5 =", 23/5)
-print("23//5 =", 23//5) # 整除
-print("23.0//5 =", 23.0//5)
+print("23 / 5 =", 23 / 5)
+print("23 // 5 =", 23 // 5) # 整除
+print("23.0 // 5 =", 23.0 // 5)
 
 # 整数能除尽
-print("25/5 =", 25/5)
-print("25//5 =", 25//5)
-print("25.0//5 =", 25.0//5)
+print("25 / 5 =", 25 / 5)
+print("25 // 5 =", 25 // 5)
+print("25.0 // 5 =", 25.0 // 5)
 
 # 次方（乘方）运算
 print('----次方运算----')
-print('3**4 =', 3**4)
-print('2**5 =', 2**5)
+print('3 ** 4 =', 3 ** 4)
+print('2 ** 5 =', 2 ** 5)
 print('----开方运算----')
-print('81**(1/4) =', 81**(1/4))
-print('32**(1/5) =', 32**(1/5))
+print('81 ** (1/4) =', 81 ** (1/4))
+print('32 ** (1/5) =', 32 ** (1/5))
 
 import time # 引入time模块
 t1 = time.gmtime() # gmtime()用来获取当前时间
-t2 =  time.gmtime()
+t2 = time.gmtime()
 print(t1 == t2) # 输出True
 print(t1 is t2) # 输出False
 print(t1 is not t2) # 输出True
