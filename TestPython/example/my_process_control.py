@@ -10,6 +10,8 @@
 # {}   # 空字典
 # None # 空值
 
+# Python 是以缩进来标记代码块的，代码块一定要有缩进，没有缩进的不是代码块。另外，同一个代码块的缩进量要相同，缩进量不同的不属于同一个代码块。
+
 b = False
 if b:
     print('b是True')
@@ -47,3 +49,22 @@ if func():
     print('func()返回值不是空')
 else:
     print('func()返回值为空')
+
+# input函数表示命令行输入
+proof = int( input("输入驾驶员每 100ml 血液酒精的含量：") )
+if proof < 20:
+    print("驾驶员不构成酒驾")
+else:
+    if proof < 80:
+        print("驾驶员已构成酒驾")
+    else:
+        print("驾驶员已构成醉驾")
+
+# Python assert 语句，又称断言语句，可以看做是功能缩小版的 if 语句，它用于判断某个表达式的值，如果值为真，则程序可以继续往下执行；反之，Python 解释器会报 AssertionError 错误。
+# 有读者可能会问，明明 assert 会令程序崩溃，为什么还要使用它呢？这是因为，与其让程序在晚些时候崩溃，不如在错误条件出现时，就直接让程序崩溃，这有利于我们对程序排错，提高程序的健壮性。
+mathmark = int( input() )
+# 断言数学考试分数是否位于正常范围内
+# assert 0 <= mathmark <= 100 # 允许这个写法
+assert  mathmark >= 0 and mathmark <= 100
+# 只有当 mathmark 位于 [0, 100] 范围内，程序才会继续执行
+print("数学考试分数为：", mathmark)
