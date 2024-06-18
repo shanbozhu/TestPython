@@ -27,7 +27,7 @@ print(rs)
 user_name = 'Charlie'
 user_age = 8
 print("读者名:", user_name, "年龄:", user_age)
-print("读者名:", user_name, "年龄:", user_age, sep='|')
+print("读者名:", user_name, "年龄:", user_age, sep = '|')
 
 print(40, end="")
 print(50, end="")
