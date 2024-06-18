@@ -373,3 +373,44 @@ print(a)
 # key存在，指定默认值
 a.setdefault('数学', 100)
 print(a)
+
+########## set
+
+# 从形式上看，和字典类似，Python 集合会将所有元素放在一对大括号 {} 中，相邻元素之间用“,”分隔
+# 从内容上看，同一集合中，只能存储不可变的数据类型，包括整形、浮点型、字符串、元组，无法存储列表、字典、集合这些可变的数据类型，否则 Python 解释器会抛出 TypeError 错误
+
+a = {1, 2, 1, (1, 2, 3), 'c', 'c'}
+print(a) # 去重
+
+set1 = set("c.biancheng.net")
+set2 = set([1,2,3,4,5,5])
+set3 = set((1,2,3,4,5))
+print("set1:", set1)
+print("set2:", set2)
+print("set3:", set3)
+
+a = {1, 'c', 1, (1, 2, 3), 'c'}
+for ele in a:
+    print(ele)
+
+a = {1, 2, 3}
+a.add((1, 2))
+print(a)
+
+a = {1,2,3}
+a.remove(1)
+print(a)
+
+a = {1,2,3}
+a.remove(1)
+print(a)
+a.discard(1)
+print(a)
+
+# 需要注意的是，set 集合本身的元素必须是不可变的， 所以 set 的元素不能是 set，只能是 frozenset。向 set 中添加 frozenset 是没问题的，因为 frozenset 是不可变的。
+s = {'Python', 'C', 'C++'}
+fs = frozenset(['Java', 'Shell'])
+s_sub = {'PHP', 'C#'}
+# 向set集合中添加frozenset
+s.add(fs)
+print('s =', s)
