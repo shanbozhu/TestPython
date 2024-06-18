@@ -65,6 +65,58 @@ else:
 mathmark = int( input() )
 # 断言数学考试分数是否位于正常范围内
 # assert 0 <= mathmark <= 100 # 允许这个写法
-assert  mathmark >= 0 and mathmark <= 100
+assert mathmark >= 0 and mathmark <= 100
 # 只有当 mathmark 位于 [0, 100] 范围内，程序才会继续执行
 print("数学考试分数为：", mathmark)
+
+########## 加循环
+
+# 一定要保证循环条件有变成假的时候，否则这个循环将成为一个死循环。所谓死循环，指的是无法结束循环的循环结构，
+
+# 循环的初始化条件
+num = 0
+# 当 num 小于100时，会一直执行循环体
+while num < 100 :
+    print("num =", num)
+    # 迭代语句
+    num += 1
+print("循环结束!")
+
+my_char = "http://c.biancheng.net/python/"
+i = 0;
+while i < len(my_char):
+    print(my_char[i], end = "+")
+    i = i + 1
+print()
+
+add = "http://c.biancheng.net/python/"
+# for循环，遍历 add 字符串
+for ch in add:
+    print(ch, end = "+")
+print()
+
+print("计算 1+2+...+100 的结果为：")
+# 保存累加结果的变量
+result = 0
+# 逐个获取从 1 到 100 这些值，并做累加操作
+for i in range(101): # range(101) 等价与 range(0, 101)
+    result += i
+print(result)
+print(range(0, 101)) # range(0, 101)
+# 上面代码中，使用了 range() 函数，此函数是 Python 内置函数，用于生成一系列连续整数，多用于 for 循环中。
+
+my_list = [1, 2, 3, 4, 5]
+for ele in my_list:
+    print('ele =', ele)
+
+my_dic = {'python教程': "http://c.biancheng.net/python/", # 表达式中有不必要的反斜杠
+          'shell教程': "http://c.biancheng.net/shell/",
+          'java教程': "http://c.biancheng.net/java/"}
+for ele in my_dic: # 因此，直接遍历字典，和遍历字典 keys() 方法的返回值是相同的。
+    print('ele =', ele)
+for ele in my_dic.keys():
+    print('ele =', ele)
+for ele in my_dic.items():
+    print('ele =', ele)
+for ele in my_dic.values():
+    print('ele =', ele)
