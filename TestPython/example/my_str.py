@@ -80,3 +80,16 @@ print(list5) # ['C语言中文网 ', '', '', ' c.biancheng.net']
 str = "C语言中文网   >>>   c.biancheng.net"  # 包含 3 个连续的空格
 list6 = str.split()
 print(list6)
+
+# 将列表中的字符串合并成一个字符串。
+list = ['c', 'biancheng', 'net']
+a = '.'.join(list)
+print(a)
+b = '+'.join(list)
+print(b)
+
+# 将元组中的字符串合并成一个字符串。
+di = '', 'usr', 'bin', 'env'
+print(type(di))
+a = '/'.join(di)
+print(a)

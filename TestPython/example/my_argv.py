@@ -23,7 +23,7 @@ import getopt
 # print(argv2)
 
 # 方式三
-opts, args = getopt.getopt(sys.argv[1:], "hi:o:", ["input=", "output=", "help"])
+(opts, args) = getopt.getopt(sys.argv[1:], "hi:o:", ["input=", "output=", "help"])
 input_file = ""
 output_file = ""
 for op, value in opts:
