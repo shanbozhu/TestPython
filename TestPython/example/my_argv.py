@@ -2,6 +2,7 @@
 python test.py --input 3 --output 4
 python test.py -i 3 -o 4
 """
+
 # 方式一
 # import argparse
 # parser = argparse.ArgumentParser()
