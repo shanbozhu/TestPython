@@ -301,3 +301,202 @@ class CLanguage:
         print("优惠后的价格为：", sale) # sale为 局部变量
 clang = CLanguage()
 clang.count(100)
+
+# 和 类属性 一样，类的方法 也可以进行更细致的划分，具体可分为 类方法、实例方法和静态方法。
+# 和 类属性 的分类不同，对于初学者来说，区分这 3 种 类的方法 是非常简单的，即采用 @classmethod 修饰的方法为 类方法；采用 @staticmethod 修饰的方法为 静态方法；不用任何修改的方法为 实例方法。
+class CLanguage:
+    # 类构造方法，也属于 实例方法
+    def __init__(self):
+        self.name = "C语言中文网"
+        self.add = "http://c.biancheng.net"
+    # 下面定义了一个say 实例方法
+    def say(self):
+        print("正在调用 say() 实例方法")
+# 实例方法 最大的特点就是，它最少也要包含一个 self 参数，用于绑定调用此方法的 实例对象（Python 会自动完成绑定）。实例方法 通常会用 类的对象 直接调用，例如：
+clang = CLanguage()
+clang.say()
+# 当然，Python 也支持使用 类名 调用 实例方法，但此方式需要手动给 self 参数传值。例如：
+# 类名 调用 实例方法，需手动给 self 参数传值
+clang = CLanguage()
+CLanguage.say(clang)
+
+# Python 类方法 和 实例方法 相似，它最少也要包含一个参数，只不过 类方法 中通常将其命名为 cls，Python 会自动将 类本身 绑定给 cls 参数（注意，绑定的不是 类对象）。也就是说，我们在调用 类方法 时，无需显式为 cls 参数传参。
+class CLanguage:
+    # 类构造方法，也属于 实例方法
+    def __init__(self):
+        self.name = "C语言中文网"
+        self.add = "http://c.biancheng.net"
+    # 下面定义了一个类方法
+    @classmethod
+    def info(cls):
+        print("正在调用类方法", cls)
+# 类方法推荐使用 类名 直接调用，当然也可以使用 实例对象 来调用（不推荐）。
+# 使用 类名 直接调用 类方法
+CLanguage.info()
+# 使用 类的对象 调用 类方法
+clang = CLanguage()
+clang.info()
+
+# 静态方法，其实就是我们学过的函数，和函数唯一的区别是，静态方法定义在类这个空间（类命名空间）中，而函数则定义在程序所在的空间（全局命名空间）中。
+# 静态方法没有类似 self、cls 这样的特殊参数，因此 Python 解释器不会对它包含的参数做任何类或对象的绑定。也正因为如此，类的静态方法中无法调用任何 类的属性 和 类的方法。
+class CLanguage:
+    @staticmethod
+    def info(name, add):
+        print(name, add)
+# 静态方法的调用，既可以使用类名，也可以使用类对象，例如：
+# 使用 类名 直接调用 静态方法
+CLanguage.info("C语言中文网","http://c.biancheng.net")
+# 使用 类的对象 调用 静态方法
+clang = CLanguage()
+clang.info("Python教程","http://c.biancheng.net/python")
+# 在实际编程中，几乎不会用到 类方法 和 静态方法，因为我们完全可以使用函数代替它们实现想要的功能，但在一些特殊的场景中（例如工厂模式中），使用 类方法 和 静态方法 也是很不错的选择。
+
+# 通过前面的学习，类方法大体分为 3 类，分别是 类方法、实例方法和静态方法，其中 实例方法 用的是最多的。我们知道，实例方法 的调用方式其实有 2 种，既可以采用 类的对象 调用，也可以直接通过 类名 调用。
+# 如果想通过类名直接调用实例方法，就必须手动为 self 参数传值。
+class CLanguage:
+    def info(self):
+        print("我正在学 Python")
+clang = CLanguage()
+# 通过 类名 直接调用 实例方法
+CLanguage.info(clang) # 读者想想也应该明白，self 参数需要的是方法的 实际调用者（是 类的对象），而这里只提供了 类名，当然无法自动传值。
+
+# 值得一提的是，上面的报错信息只是让我们手动为 self 参数传值，但并没有规定必须传一个该 类的对象，其实完全可以任意传入一个参数，例如：
+class CLanguage:
+    def info(self):
+        print(self, "正在学 Python")
+# 通过 类名 直接调用 实例方法
+CLanguage.info("zhangsan")
+# 可以看到，"zhangsan" 这个字符串传给了 info() 方法的 self 参数。显然，无论是 info() 方法中使用 self 参数调用其它类方法，还是使用 self 参数定义新的实例变量，胡乱的给 self 参数传参都将会导致程序运行崩溃。
+
+# 用类的 实例对象 访问 类成员 的方式称为 绑定方法，而用 类名 调用 类成员 的方式称为 非绑定方法。
+
+# 描述符类
+# 本质上看，描述符就是一个类，只不过它定义了另一个类中属性的访问方式。换句话说，一个类可以将属性管理全权委托给描述符类。
+# 从这个例子可以看到，如果一个类的某个属性有数据描述符，那么每次查找这个属性时，都会调用描述符的 __get__() 方法，并返回它的值；同样，每次在对该属性赋值时，也会调用 __set__() 方法。
+class revealAccess:
+    def __init__(self, initval = None, name = 'var'):
+        self.val = initval
+        self.name = name
+    def __get__(self, obj, objtype):
+        print("Retrieving", self.name)
+        return self.val
+    def __set__(self, obj, val):
+        print("updating", self.name)
+        self.val = val
+class myClass:
+    x = revealAccess(10,'var "x"')
+    y = 5
+m = myClass()
+print(m.x)
+m.x = 20
+print(m.x)
+print(m.y)
+
+# 前面章节中，我们一直在用 “类的对象.属性” 的方式访问类中定义的 属性，其实这种做法是欠妥的，因为它破坏了类的封装原则。正常情况下，类包含的 属性 应该是 隐藏 的，只允许通过类提供的 方法 来 间接 实现对 类的属性 的访问和操作。
+# 因此，在不破坏类封装原则的基础上，为了能够有效操作类中的 属性，类中应包含读（或写） 类的属性 的多个 getter（或 setter）方法，这样就可以通过 “类的对象.方法(参数)” 的方式操作属性，例如：
+class CLanguage:
+    # 构造函数
+    def __init__(self, name):
+        self.name = name
+        # 设置 name 属性值的函数
+    def setname(self, name):
+        self.name = name
+    # 访问nema属性值的函数
+    def getname(self):
+        return self.name
+    # 删除name属性值的函数
+    def delname(self):
+        self.name = "xxx"
+clang = CLanguage("C语言中文网")
+# 获取name属性值
+print(clang.getname())
+# 设置name属性值
+clang.setname("Python教程")
+print(clang.getname())
+# 删除name属性值
+clang.delname()
+print(clang.getname())
+
+# 可能有读者觉得，这种操作 类的属性 的方式比较麻烦，更习惯使用 “类的对象.属性” 这种方式。
+# 庆幸的是，Python 中提供了 property() 函数，可以实现在不破坏 类封装 原则的前提下，让开发者依旧使用 “类的对象.属性” 的方式操作类中的 属性。
+
+# 例如，修改上面的程序，为 name 属性配置 property() 函数：
+# property() 函数的基本使用格式：属性名=property(fget=None, fset=None, fdel=None, doc=None)
+# 注意，在使用 property() 函数时，以上 4 个参数可以仅指定第 1 个、或者前 2 个、或者前 3 个，也可以全部指定。也就是说，property() 函数中参数的指定 并不是完全随意的。
+class CLanguage:
+    # 构造函数
+    def __init__(self,n):
+        self.__name = n
+    # 设置 name 属性值的函数
+    def setname(self,n):
+        self.__name = n
+    # 访问 name 属性值的函数
+    def getname(self):
+        return self.__name
+    # 删除 name 属性值的函数
+    def delname(self):
+        self.__name="xxx"
+    # 为 name 属性配置 property() 函数
+    name = property(getname, setname, delname, '指明出处')
+# 调取说明文档的 2 种方式
+print(CLanguage.name.__doc__)
+help(CLanguage.name)
+clang = CLanguage("C语言中文网")
+# 调用 getname() 方法
+print(clang.name)
+# 调用 setname() 方法
+clang.name = "Python教程"
+print(clang.name)
+# 调用 delname() 方法
+del clang.name
+print(clang.name)
+# 注意，在此程序中，由于 getname() 方法中需要返回 name 属性，如果使用 self.name 的话，其本身又被调用 getname()，这将会先入无限死循环。为了避免这种情况的出现，程序中的 name 属性必须设置为 私有属性，即使用 __name（前面有 2 个下划线）。
+# 当然，property() 函数也可以少传入几个参数。以上面的程序为例，我们可以修改 property() 函数如下所示
+# name = property(getname, setname)
+# 这意味着，name 是一个可读写的属性，但不能删除，因为 property() 函数中并没有为 name 配置用于函数该属性的方法。也就是说，即便 CLanguage 类中设计有 delname() 函数，这种情况下也不能用来删除 name 属性。
+# 同理，还可以像如下这样使用 property() 函数：
+# name = property(getname)    # name 属性可读，不可写，也不能删除
+# name = property(getname, setname, delname)    # name属性可读、可写、也可删除，就是没有说明文档
+
+# 封装、继承和多态
+# 注意，封装绝不是将类中所有的方法都隐藏起来，一定要留一些像键盘、鼠标这样可供外界使用的 类的方法。
+# Python 类中的 变量和函数，不是公有的（类似 public 属性），就是私有的（类似 private），这 2 种属性的区别如下：
+# public：公有属性的 类的变量和类的函数，在类的外部、类内部以及子类（后续讲继承特性时会做详细介绍）中，都可以正常访问；
+# private：私有属性的 类的变量和类的函数，只能在 本类内部 使用，类的外部 以及 子类 都无法使用。
+
+# 但是，Python 并没有提供 public、private 这些修饰符。为了实现类的封装，Python 采取了下面的方法：
+# 默认情况下，Python 类中的变量和方法都是公有（public）的，它们的名称前都没有下划线（_）；
+# 如果类中的变量和函数，其名称以双下划线 “__” 开头，则该变量（函数）为 私有变量（私有函数），其属性等同于 private。
+# 除此之外，还可以定义以单下划线 “_” 开头的 类的属性 或者 类的方法（例如 _name、_display(self)），这种 类的属性 和 类的方法 通常被 视为 私有属性和私有方法，虽然它们也能通过 类的对象正常访问，但这是一种 约定俗成 的用法，初学者一定 要遵守。
+# 注意，Python 类中还有以 双下划线开头和结尾 的类的方法（例如类的构造函数__init__(self)），这些都是 Python 内部定义的，用于 Python 内部调用。我们自己定义 类的属性 或者 类的方法 时，不要 使用这种格式。
+class CLanguage:
+    def setname(self, name):
+        if len(name) < 3:
+            raise ValueError('名称长度必须大于3！')
+        self.__name = name
+    def getname(self):
+        return self.__name
+    # 为 name 配置 setter 和 getter 方法
+    name = property(getname, setname)
+
+    def setadd(self, add):
+        if add.startswith("http://"):
+            self.__add = add
+        else:
+            raise ValueError('地址必须以 http:// 开头')
+    def getadd(self):
+        return self.__add
+    # 为 add 配置 setter 和 getter 方法
+    add = property(getadd, setadd)
+
+    # 定义个私有方法
+    def __display(self):
+        print(self.__name, self.__add)
+
+clang = CLanguage()
+clang.name = "C语言中文网"
+clang.add = "http://c.biancheng.net"
+print(clang.name)
+print(clang.add)
+# 尝试调用私有的 display() 方法
+# clang.__display() # 私有的，无法在 类外部 访问
