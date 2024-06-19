@@ -193,3 +193,65 @@ def outdef():
 # 调用全局函数
 outdef()
 
+# 闭包，又称闭包函数或者闭合函数，其实和前面讲的嵌套函数类似，不同之处在于，闭包中外部函数返回的不是一个具体的值，而是一个函数。一般情况下，返回的函数会赋值给一个变量，这个变量可以在后面被继续执行调用。
+#闭包函数，其中 exponent 称为 自由变量
+def nth_power(exponent):
+    def exponent_of(base):
+        return base ** exponent
+    return exponent_of # 返回值是 exponent_of 函数
+square = nth_power(2) # 计算一个数的平方
+cube = nth_power(3) # 计算一个数的立方
+print(square(2))  # 计算 2 的平方
+print(cube(2)) # 计算 2 的立方
+# 需要注意的是，在执行完 square = nth_power(2) 和 cube = nth_power(3) 后，外部函数 nth_power() 的参数 exponent 会和内部函数 exponent_of 一起赋值给 squre 和 cube，这样在之后调用 square(2) 或者 cube(2) 时，程序就能顺利地输出结果，而不会报错说参数 exponent 没有定义。
+# Python闭包的__closure__属性。闭包比普通的函数多了一个 __closure__ 属性，该属性记录着 自由变量 的地址。当闭包被调用时，系统就会根据该地址找到对应的 自由变量，完成整体的函数调用。
+def nth_power(exponent):
+    def exponent_of(base):
+        return base ** exponent
+    return exponent_of
+square = nth_power(2)
+# 查看 __closure__ 的值
+print(square.__closure__)
+
+# 对于定义一个简单的函数，Python 还提供了另外一种方法，即使用本节介绍的 lambda 表达式。
+# lambda 表达式，又称匿名函数，常用来表示内部仅包含 1 行表达式的函数。如果一个函数的函数体仅有 1 行表达式，则该函数就可以用 lambda 表达式来代替。
+# name = lambda [list] : 表达式
+# 等价于
+# def name(list):
+#     return 表达式
+# name(list)
+
+# 可以这样理解 lambda 表达式，其就是简单函数（函数体仅是单行的表达式）的简写版本。相比函数，lamba 表达式具有以下  2 个优势：
+# 对于单行函数，使用 lambda 表达式可以省去定义函数的过程，让代码更加简洁；
+# 对于不需要多次复用的函数，使用 lambda 表达式可以在用完之后立即释放，提高程序执行的性能。
+
+def add(x, y):
+    return x + y
+print(add(3, 4))
+
+add = lambda x, y: x + y
+print(add(3, 4))
+
+# eval() 和 exec() 函数的功能是相似的，都可以执行一个字符串形式的 Python 代码（代码以字符串的形式提供），相当于一个 Python 的解释器。二者不同之处在于，eval() 执行完要返回结果，而 exec() 执行完不返回结果（文章后续会给出详细示例）。
+# 注意，__builtins__ 是 Python 的内建模块，平时使用的 int、str、abs 都在这个模块中。通过 print(dic["__builtins__"]) 语句可以查看 __builtins__ 所对应的 value。
+dic = {} # 定义一个字典
+dic['b'] = 3 # 在 dic 中加一条元素，key 为 b
+print (dic.keys()) # 先将 dic 的 key 打印出来，有一个元素 b
+exec("a = 4", dic) # 在 exec 执行的语句后面跟一个作用域 dic
+print(dic.keys()) # exec 后，dic 的 key 多了一个
+print(dic["__builtins__"])
+
+a = 10
+b = 20
+c = 30
+g = {'a':6, 'b':8} # 定义一个字典
+t = {'b':100, 'c':10} # 定义一个字典
+print(eval('a+b+c', g, t)) # 定义一个字典 116
+
+a = 1
+exec("a = 2") # 相当于直接执行 a=2
+print(a)
+a = exec("2+3") # 相当于直接执行 2+3，但是并没有返回值，a 应为 None
+print(a)
+a = eval('2+3') # 执行 2+3，并把结果返回给 a
+print(a)
