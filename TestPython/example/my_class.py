@@ -566,3 +566,58 @@ ostrich.fly()
 Bird.fly(ostrich)
 # 此程序中，需要大家注意的一点是，使用 类名 调用其 类的方法，Python 不会 为该方法的第一个 self 参数 自动绑定值，因此采用这种调用方法，需要手动为 self 参数赋值。
 # 通过 类名 调用 实例方法 的这种方式，又被称为 未绑定方法。
+
+# 但我们知道，Python 是一门支持多继承的面向对象编程语言，如果子类继承的多个父类中包含同名的类 实例方法，则子类对象在调用该方法时，会优先选择排在 最前面的父类 中的 实例方法。显然，构造方法也是如此。
+class People:
+    def __init__(self, name):
+        self.name = name
+    def say(self):
+        print("我是人，名字为：", self.name)
+class Animal:
+    def __init__(self, food):
+        self.food = food
+    def display(self):
+        print("我是动物,我吃", self.food)
+# People中的 name 属性和 say() 会覆盖 Animal 类中的
+class Person(People, Animal):
+    pass
+per = Person("zhangsan")
+per.say()
+# per.display()
+# 上面程序中，Person 类同时继承 People 和 Animal，其中 People 在前。这意味着，在创建 per 对象时，其将会调用从 People 继承来的构造函数。因此我们看到，上面程序在创建 per 对象的同时，还要给 name 属性进行赋值。
+# 但如果去掉最后一行的注释，运行此行代码，Python 解释器会报错误：
+# 从 Animal 类中继承的 display() 方法中，需要用到 food 属性的值，但由于 People 类的构造方法 “覆盖” 了Animal 类的构造方法，使得在创建 per 对象时，Animal 类的 构造方法 未得到执行，所以程序出错。
+# 针对这种情况，正确的做法是定义 Person 类自己的 构造方法（等同于 重写 第一个 直接父类 的 构造方法）。
+
+# 但需要注意，如果在 子类 中定义 构造方法，则 必须 在该方法中调用 父类的 构造方法。
+
+# 在子类中的构造方法中，调用父类构造方法的方式有 2 种，分别是：
+# 类可以看做一个独立空间，在类的外部调用其中的实例方法，可以向调用普通函数那样，只不过需要额外备注类名（此方式又称为未绑定方法）；
+# 使用 super() 函数。但如果涉及多继承，该函数只能调用 第一个 直接父类 的构造方法。
+# 也就是说，涉及到多继承时，在子类构造函数中，调用 第一个 父类构造方法的方式有以上 2 种，而调用 其它父类 构造方法的方式只能使用 未绑定方法。
+# 值得一提的是，Python 2.x 中，super() 函数的使用语法格式如下：super(Class, obj).__init__(...) ，其中，Class 是子类的 类名，obj 通常指的就是 self。
+# 但在 Python 3.x 中，super() 函数有一种更简单的语法格式，推荐大家使用这种格式：super().__init__(...)
+class People:
+    def __init__(self, name):
+        self.name = name
+    def say(self):
+        print("我是人，名字为：", self.name)
+class Animal:
+    def __init__(self, food):
+        self.food = food
+    def display(self):
+        print("我是动物，我吃", self.food)
+class Person(People, Animal):
+    # 自定义构造方法
+    def __init__(self, name, food):
+        # 调用 People 类的构造方法
+        super().__init__(name)
+        # super(Person, self).__init__(name) # 执行效果和上一行相同
+        # People.__init__(self, name) # 使用未绑定方法调用 People 类构造方法
+
+        # 调用 其它父类 的构造方法，需手动给 self 传值
+        Animal.__init__(self, food)
+per = Person("zhangsan","熟食")
+per.say()
+per.display()
+# 可以看到，Person 类自定义的 构造方法中，调用 People 类 构造方法，可以使用 super() 函数，也可以使用 未绑定方法。但是调用 Animal 类的 构造方法，只能使用 未绑定方法。
