@@ -500,3 +500,44 @@ print(clang.name)
 print(clang.add)
 # 尝试调用私有的 display() 方法
 # clang.__display() # 私有的，无法在 类外部 访问
+
+# Python继承机制及其使用
+# 子类继承父类时，只需在定义子类时，将父类（可以是多个）放在子类之后的圆括号里即可。
+# 注意，如果该类没有 显式 指定继承自哪个类，则 默认 继承 object 类（object 类是 Python 中 所有类的父类，即要么是 直接父类，要么是 间接父类）。另外，Python 的继承是 多继承 机制（和 C++ 一样），即一个 子类 可以同时拥有 多个 直接父类。
+class People:
+    def say(self):
+        print("我是一个人，名字是：", self.name)
+class Animal:
+    def display(self):
+        print("人也是高级动物")
+# 同时继承 People 和 Animal 类
+# 其同时拥有 name 属性、say() 和 display() 方法
+class Person(People, Animal):
+    pass
+zhangsan = Person()
+zhangsan.name = "张三"
+zhangsan.say()
+zhangsan.display()
+# 没错，子类拥有父类 所有的 属性和方法，即便该 属性或方法 是 私有（private）的。
+
+# 事实上，大部分面向对象的编程语言，都只支持单继承，即子类有且只能有一个 直接父类。而 Python 却支持多继承（C++也支持多继承）。
+# 和单继承相比，多继承容易让代码 逻辑复杂、思路混乱，一直备受争议，中小型项目中较少使用，后来的 Java、C#、PHP 等干脆取消了多继承。
+# 使用多继承经常需要面临的问题是，多个父类中包含同名的类方法。对于这种情况，Python 的处置措施是：根据子类继承多个父类时这些父类的前后次序决定，即 排在前面 父类中的类的方法会 覆盖 排在后面 父类中的同名类的方法。
+class People:
+    def __init__(self):
+        self.name = People
+    def say(self):
+        print("People类", self.name)
+class Animal:
+    def __init__(self):
+        self.name = Animal
+    def say(self):
+        print("Animal类", self.name)
+# People中的 name 属性和 say() 会覆盖 Animal 类中的
+class Person(People, Animal):
+    pass
+zhangsan = Person()
+zhangsan.name = "张三"
+zhangsan.say()
+# 可以看到，当 Person 同时继承 People 类和 Animal 类时，People 类在前，因此如果 People 和 Animal 拥有同名的 类的方法，实际调用的是 People 类中的。
+# 虽然 Python 在语法上支持 多继承，但逼不得已，建议大家 不要使用多继承。
