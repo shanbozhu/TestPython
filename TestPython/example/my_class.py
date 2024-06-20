@@ -621,3 +621,120 @@ per = Person("zhangsan","熟食")
 per.say()
 per.display()
 # 可以看到，Person 类自定义的 构造方法中，调用 People 类 构造方法，可以使用 super() 函数，也可以使用 未绑定方法。但是调用 Animal 类的 构造方法，只能使用 未绑定方法。
+
+# 我们知道，类方法又可细分为实例方法、静态方法和类方法，Python 语言允许为类动态地添加这 3 种方法；但对于 实例对象，则只允许动态地添加 实例方法，不能添加类方法和静态方法。
+class CLanguage:
+    pass
+# 下面定义了一个实例方法
+def info(self):
+    print("正在调用实例方法")
+# 下面定义了一个类方法
+@classmethod
+def info2(cls):
+    print("正在调用类方法")
+# 下面定义个静态方法
+@staticmethod
+def info3():
+    print("正在调用静态方法")
+# 类可以动态添加以上 3 种方法，会影响所有实例对象
+CLanguage.info = info
+CLanguage.info2 = info2
+CLanguage.info3 = info3
+clang = CLanguage()
+# 如今，clang 具有以上 3 种方法
+clang.info()
+clang.info2()
+clang.info3()
+# 类实例对象只能动态添加实例方法，不会影响其它实例对象
+clang1 = CLanguage()
+clang1.info = info
+# 必须手动为 self 传值
+clang1.info(clang1)
+
+# __slots__ 只能限制为 实例对象 动态添加属性和方法，而无法限制动态地为 类 添加属性和方法。
+# __slots__ 属性值其实就是一个元组，只有其中指定的元素，才可以作为动态添加的属性或者方法的名称。
+# __slots__ 属性对由该类派生出来的子类，也是不起作用的。__slots__ 属性只对当前所在的类起限制作用。
+class CLanguage:
+    __slots__ = ('name','add','info')
+
+def info(self, name):
+    print("正在调用实例方法", self.name)
+clang = CLanguage()
+clang.name = "C语言中文网"
+# 为 clang 对象动态添加 info 实例方法
+clang.info = info
+clang.info(clang,"Python教程")
+
+# Python type()函数：动态创建类
+# 查看 3.4 的类型
+print(type(3.4))
+# 查看类的对象的类型
+class CLanguage:
+    pass
+clangs = CLanguage()
+print(type(clangs))
+# 这里重点介绍 type() 函数的另一种用法，即创建一个新类，先来分析一个样例：
+# type(name, bases, dict) 用来创建类，其中 name 表示类的名称；bases 表示一个元组，其中存储的是该类的 父类；dict 表示一个字典，用于表示类内定义的属性或者方法。
+# 定义一个实例方法
+def say(self):
+    print("我要学 Python！")
+# 使用 type() 函数创建类
+CLanguage = type("CLanguage", (object,), dict(say = say, name = "C语言中文网"))
+# 创建一个 CLanguage 实例对象
+clangs = CLanguage()
+# 调用 say() 方法和 name 属性
+clangs.say()
+print(clangs.name)
+# 可以看到，使用 type() 函数创建的类，和直接使用 class 定义的类并无差别。事实上，我们在使用 class 定义类时，Python 解释器底层依然是用 type() 来创建这个类。
+
+# Python MetaClass元类详解
+# 举个例子，根据实际场景的需要，我们要为 多个类 添加一个 name 属性和一个 say() 方法。显然有多种方法可以实现，但其中一种方法就是使用 MetaClass 元类。
+# 如果在创建类时，想用 MetaClass 元类动态地修改内部的属性或者方法，则类的创建过程将变得复杂：先创建 MetaClass 元类，然后用元类去创建类，最后使用该类的实例化对象实现功能。
+# 定义一个元类
+class FirstMetaClass(type):
+    # cls代表动态修改的类
+    # name代表动态修改的类名
+    # bases代表被动态修改的 类的 所有父类
+    # attr代表被动态修改的 类的 所有属性、方法组成的字典
+    def __new__(cls, name, bases, attrs):
+        # 动态为该类添加一个name属性
+        attrs['name'] = "C语言中文网"
+        attrs['say'] = lambda self: print("调用 say() 实例方法")
+        return super().__new__(cls, name, bases, attrs)
+# 此程序中，首先可以断定 FirstMetaClass 是一个类。其次，由于该类继承自 type 类，并且内部实现了 __new__() 方法，因此可以断定 FirstMetaCLass 是一个元类。
+
+# 定义类时，指定元类
+class CLanguage(object, metaclass=FirstMetaClass):
+    pass
+clangs = CLanguage()
+print(clangs.name)
+clangs.say()
+
+class CLanguageCLanguage(object, metaclass=FirstMetaClass):
+    pass
+clangs1 = CLanguageCLanguage()
+print(clangs1.name)
+clangs1.say()
+# 可以看到，在创建类时，通过在 标注父类 的同时 指定元类（格式为metaclass=元类名），则当 Python 解释器在创建这该类时，FirstMetaClass 元类中的 __new__ 方法就会被调用，从而实现动态修改 类的属性 或者 类的方法 的目的。
+
+# Python 类使用 多态 特性的精髓。其实，Python 在多态的基础上，衍生出了一种更灵活的编程机制。
+class WhoSay:
+    def say(self, who):
+        who.say()
+class CLanguage:
+    def say(self):
+        print("调用的是 Clanguage 类的say方法")
+class CPython(CLanguage):
+    def say(self):
+        print("调用的是 CPython 类的say方法")
+class CLinux(CLanguage):
+    def say(self):
+        print("调用的是 CLinux 类的say方法")
+a = WhoSay()
+# 调用 CLanguage 类的 say() 方法
+a.say(CLanguage())
+# 调用 CPython 类的 say() 方法
+a.say(CPython())
+# 调用 CLinux 类的 say() 方法
+a.say(CLinux())
+# 在其它教程中，Python 这种由多态衍生出的更灵活的编程机制，又称为“鸭子模型”或“鸭子类型”。
