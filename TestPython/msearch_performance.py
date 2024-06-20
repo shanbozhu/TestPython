@@ -11,6 +11,7 @@ Description:
 
 import sys
 import os
+
 path = sys.path[0]
 os.system("python " + path + "/matrix_search_result_page.py")
 os.system("python " + path + "/matrix_search_imagetext_landing_page.py")
