@@ -68,6 +68,34 @@ finally:
 # finally 块的强大还远不止此，即便当 try 块发生异常，且没有合适和 except 处理异常时，finally 块中的代码也会得到执行。例如：
 try:
     # 发生异常
-    print(20/0)
+    # print(20/0)
+    pass
 finally:
     print("程序终止，仍然会 执行 finally 块中的代码")
+
+# 在前面章节的学习中，遗留过一个问题，即是否可以在程序的指定位置手动抛出一个异常？答案是肯定的，Python 允许我们在程序中手动设置异常，使用 raise 语句即可。
+# 当然，我们手动让程序引发异常，很多时候并不是为了让其 崩溃。事实上，raise 语句引发的异常通常用 try except（else finally）异常处理结构来 捕获 并进行处理。例如：
+try:
+    a = input("输入一个数：")
+    # 判断用户输入的是否为数字
+    if (not a.isdigit()):
+        raise ValueError("a 必须是数字")
+except ValueError as e:
+    print("引发异常：", repr(e))
+
+# raise 不需要参数
+try:
+    a = input("输入一个数：")
+    if (not a.isdigit()):
+        raise ValueError("a 必须是数字")
+except ValueError as e:
+    print("引发异常：", repr(e))
+    # raise # 这里重点关注位于 except 块中的 raise，由于在其之前我们已经手动引发了 ValueError 异常，因此这里当再使用 raise 语句时，它会再次引发一次。
+
+# 当在没有引发过异常的程序使用无参的 raise 语句时，它默认引发的是 RuntimeError 异常。例如：
+try:
+    a = input("输入一个数：")
+    if (not a.isdigit()):
+        raise
+except RuntimeError as e:
+    print("引发异常：", repr(e))
