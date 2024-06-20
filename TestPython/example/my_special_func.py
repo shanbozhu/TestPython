@@ -280,3 +280,44 @@ print("**********")
 if hasattr(clangs, "say"):
     print(hasattr(clangs.say, "__call__"))
 # 可以看到，由于 name 是类的属性，它没有以 __call__ 为名的 __call__() 方法；而 say 是类的方法，它是 可调用对象，因此它有 __call__() 方法。
+
+# Python @函数装饰器及用法（超级详细）
+# 前面章节中，我们已经讲解了 Python 内置的 3 种函数装饰器，分别是 ＠staticmethod、＠classmethod 和 @property，其中 staticmethod()、classmethod() 和 property() 都是 Python 的内置函数。
+
+# funA 作为装饰器函数
+def funA(fn):
+    print("C语言中文网")
+    fn() # 执行传入的fn参数
+    print("http://c.biancheng.net")
+    return "装饰器函数的返回值"
+@funA
+def funB():
+    print("学习 Python")
+# 等价于下面语句
+# funB = funA(funB)
+print(funB)
+# 显然，被“＠函数”修饰的函数不再是原来的函数，而是被替换成一个新的东西（取决于装饰器的返回值），即如果装饰器函数的返回值为普通变量，那么被修饰的函数名就变成了变量名；同样，如果装饰器返回的是一个函数的名称，那么被修饰的函数名依然表示一个函数。
+# 实际上，所谓函数装饰器，就是通过 装饰器函数，在不修改 原函数 的前提下，来对 函数 的功能进行合理的扩充。
+
+def funA(fn):
+    # 定义一个嵌套函数
+    def say(arc):
+        print("Python教程:", arc)
+    return say
+@funA
+def funB(arc):
+    print("funB():", a)
+funB("http://c.biancheng.net/python")
+
+# 这里有必要给读者分析一下这个程序，其实，它和如下程序是等价的：
+def funA(fn):
+    # 定义一个嵌套函数
+    def say(arc):
+        print("Python教程:", arc)
+    return say
+def funB(arc):
+    print("funB():", a)
+funB = funA(funB)
+funB("http://c.biancheng.net/python")
+
+# *args 和 **kwargs 表示接受任意数量和类型的参数。
