@@ -40,3 +40,18 @@ dis("http://c.biancheng.net/shell/")
 
 from my_package.my_package_module_1 import *
 display("http://c.biancheng.net/shell/")
+
+help(my_package.my_package_module_1)
+help(my_package.my_package_module_1.display)
+help(my_package.my_package_module_1.display.__doc__)
+# 其实，help() 函数底层也是借助 __doc__ 属性实现的。
+
+# 那么，如果使用 help() 函数或者 __doc__ 属性，仍然无法满足我们的需求，还可以使用以下 2 种方法：
+# 调用 __file__ 属性，查看该 模块 或者 包 的具体 存储位置，直接查看其源代码（后续章节或详细介绍）；
+# 对于非自定义的 模块 或者 包，可以查阅 Python 库的参考文档 https://docs.python.org/3/library/index.html。
+
+print(my_package.__file__) # /Users/wsc/Desktop/Test/TestPython/TestPython/example/my_package/__init__.py
+
+import string
+print(string.__file__)
+# 注意，并不是所有模块都提供 __file__ 属性，因为并不是所有模块的实现都采用 Python 语言，有些模块采用的是其它编程语言（如 C 语言）。
