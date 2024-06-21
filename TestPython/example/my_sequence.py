@@ -319,7 +319,7 @@ print(dir(dict))
 scores = {'数学': 95, '语文': 89, '英语': 90}
 print(scores.keys())
 print(scores.values())
-print(scores.items()) # 可以发现，keys()、values() 和 items() 返回值的类型分别为 dict_keys、dict_values 和 dict_items。但在 Python 3.x 中，它们的返回值并不是我们常见的列表或者元组类型，因为 Python 3.x 不希望用户直接操作这几个方法的返回值。
+print(scores.items()) # 可以发现，keys()、values() 和 items() 返回值的类型分别为 dict_keys、dict_values 和 dict_items。但在 Python 3.x 中，它们的返回值并不是我们常见的 列表 或者 元组 类型，因为 Python 3.x 不希望用户直接操作这几个方法的返回值。
 
 a = {'数学': 95, '语文': 89, '英语': 90}
 b = list(a.keys())
@@ -332,11 +332,11 @@ print("\n---------------")
 for v in a.values():
     print(v, end=' ')
 print("\n---------------")
-for k,v in a.items():
+for k, v in a.items():
     print("key:", k, " value:", v)
 
 # 深拷贝只会拷贝一层，与OC一样
-a = {'one': 1, 'two': 2, 'three': [1,2,3]}
+a = {'one': 1, 'two': 2, 'three': [1, 2, 3]}
 b = a.copy()
 # 向 a 中添加新键值对，由于b已经提前将 a 所有键值对都深拷贝过来，因此 a 添加新键值对，不会影响 b。
 a['four'] = 100
