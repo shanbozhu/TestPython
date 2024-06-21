@@ -74,3 +74,38 @@ a = f.read()
 print(a)
 # 关闭文件
 f.close()
+print(a.decode())
+
+# Python readline()和readlines()函数：按行读取文件
+# 和 read() 函数不同，这 2 个函数都以“行”作为读取单位，即每次都读取目标文件中的一行。对于读取以文本格式打开的文件，读取一行很好理解；对于读取以二进制格式打开的文件，它们会以“\n”作为读取一行的标志。
+# readline() 函数用于读取文件中的一行，包含 最后的换行符“\n”。
+f = open("my_file.txt")
+# 读取一行数据
+byt = f.readline()
+print(byt)
+
+# 以二进制形式打开指定文件
+f = open("my_file.txt", 'rb')
+byt = f.readline(6)
+print(byt) # 和上一个例子的输出结果相比，由于这里没有完整读取一行的数据，因此不会读取到换行符。
+
+f = open("my_file.txt", 'rb')
+byt = f.readlines()
+print(byt)
+
+# Python write()和writelines()：向文件中写入数据
+f = open("a.txt", 'a')
+f.write("写入一行新数据")
+f.close()
+
+# Python 的文件对象中，不仅提供了 write() 函数，还提供了 writelines() 函数，可以实现将 字符串列表 写入文件中。
+f = open('a.txt', 'r')
+n = open('b.txt', 'w+')
+n.writelines(f.readlines())
+n.close()
+f.close()
+# 需要注意的是，使用 writelines() 函数向文件中写入多行数据时，不会自动给各行添加换行符。上面例子中，之所以 b.txt 文件中会逐行显示数据，是因为 readlines() 函数在读取各行数据时，读入了行尾的换行符。
+
+n = open('c.txt', 'w+')
+n.writelines(["1111111", "2222222"])
+n.close()
