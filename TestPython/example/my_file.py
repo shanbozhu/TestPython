@@ -109,3 +109,109 @@ f.close()
 n = open('c.txt', 'w+')
 n.writelines(["1111111", "2222222"])
 n.close()
+
+f = open("my_file.txt", 'r')
+print(f.tell())
+print(f.read(3))
+print(f.tell())
+# 可以看到，当使用 open() 函数打开文件时，文件指针的起始位置为 0，表示位于文件的开头处，当使用 read() 函数从文件中读取 3 个字符之后，文件指针同时向后移动了 3 个字符的位置。这就表明，当程序使用文件对象读写数据时，文件指针会自动向后移动：读写了多少个数据，文件指针就自动向后移动多少个位置。
+
+# with 表达式 [as target]：
+#     代码块
+# 此格式中，用 [] 括起来的部分可以使用，也可以省略。其中，target 参数用于指定一个变量，该语句会将 expression 指定的结果 保存 到该变量中。with as 语句中的代码块如果不想执行任何语句，可以直接使用 pass 语句代替。
+with open('a.txt', 'a') as f:
+    f.write("\nPython教程")
+
+# Python pickle模块：实现Python对象的持久化存储
+# Python 中有个序列化过程叫作 pickle，它能够实现 任意对象 与 文本 之间的相互转化，也可以实现 任意对象 与 二进制 之间的相互转化。也就是说，pickle 可以实现 Python 对象的存储及恢复。
+# 值得一提的是，pickle 是 python 语言的一个标准模块，安装 python 的同时就已经安装了 pickle 库，因此它不需要再单独安装，使用 import 将其导入到程序中，就可以直接使用。
+
+# pickle 模块提供了以下 4 个函数供我们使用：
+# dumps()：将 Python 中的对象序列化成二进制对象，并返回；
+# loads()：读取给定的二进制对象数据，并将其转换为 Python 对象；
+# dump()：将 Python 中的对象序列化成二进制对象，并写入文件；
+# load()：读取指定的序列化数据文件，并返回对象。
+# 以上这 4 个函数可以分成两类，其中 dumps 和 loads 实现基于内存的 Python 对象与二进制互转；dump 和 load 实现基于文件的 Python 对象与二进制互转。
+
+# pickle.dumps()函数
+import pickle
+tup1 = ('I love Python', {1,2,3}, None)
+# 使用 dumps() 函数将 tup1 转成 p1
+p1 = pickle.dumps(tup1)
+print(p1)
+
+# pickle.loads()函数
+import pickle
+tup1 = ('I love Python', {1, 2, 3}, None)
+p1 = pickle.dumps(tup1)
+# 使用 loads() 函数将 p1 转成 Python 对象
+t2 = pickle.loads(p1)
+print(t2)
+
+# pickle.dump()函数
+import pickle
+tup1 = ('I love Python', {1, 2, 3}, None)
+# 使用 dumps() 函数将 tup1 转成 p1
+with open ("dump.txt", 'wb') as f: # 打开文件
+    pickle.dump(tup1, f) # 用 dump 函数将 Python 对象 转成 二进制文件
+
+
+with open ("dump.txt", 'rb') as f: # 打开文件
+    t3 = pickle.load(f) # 将二进制文件 转换成 Python 对象
+    print(t3)
+# 看似强大的 pickle 模块，其实也有它的短板，即 pickle 不支持并发地访问持久性对象，在复杂的系统环境下，尤其是读取海量数据时，使用 pickle 会使整个系统的I/O读取性能成为瓶颈。这种情况下，可以使用 ZODB。
+
+# ZODB 是一个健壮的、多用户的和面向对象的数据库系统，专门用于存储 Python 语言中的对象数据，它能够存储和管理任意复杂的 Python 对象，并支持事务操作和并发控制。并且，ZODB 也是在 Python 的序列化操作基础之上实现的，因此要想有效地使用 ZODB，必须先学好 pickle。
+
+from os import path
+# 获取绝对路径
+print(path.abspath("my_file.txt"))
+# 获取共同前缀
+print(path.commonprefix(['C://my_file.txt', 'C://a.txt']))
+# 获取共同路径
+print(path.commonpath(['http://c.biancheng.net/python/', 'http://c.biancheng.net/shell/']))
+# 获取目录
+print(path.dirname('/usr/my_file.txt'))
+# 判断指定目录是否存在
+print(path.exists('my_file.txt'))
+
+# Python tempfile模块：生成 临时文件 和 临时目录
+import tempfile
+# 创建临时文件
+fp = tempfile.TemporaryFile()
+print(fp.name)
+fp.write('两情若是久长时，'.encode('utf-8'))
+fp.write('又岂在朝朝暮暮。'.encode('utf-8'))
+# 将文件指针移到开始处，准备读取文件
+fp.seek(0)
+print(fp.read().decode('utf-8')) # 输出刚才写入的内容
+# 关闭文件，该文件将会被自动删除
+fp.close()
+
+# 通过with语句创建临时文件，with会自动关闭临时文件
+with tempfile.TemporaryFile() as fp:
+    # 写入内容
+    fp.write(b'I Love Python!')
+    # 将文件指针移到开始处，准备读取文件
+    fp.seek(0)
+    # 读取文件内容
+    print(fp.read()) # b'I Love Python!'
+# 通过with语句创建临时目录
+with tempfile.TemporaryDirectory() as tmpdirname:
+    print('创建临时目录', tmpdirname)
+# 上面程序以两种方式来创建临时文件：
+# 第一种方式是手动创建临时文件，读写临时文件后需要主动关闭它，当程序关闭该临时文件时，该文件会被自动删除。
+# 第二种方式则是使用 with 语句创建临时文件，这样 with 语句会自动关闭临时文件。
+
+# 第一行输出结果就是程序生成的临时文件的文件名，最后一行输出结果就是程序生成的临时目录的目录名。需要注意的是，不要去找临时文件或临时文件夹，因为程序退出时该临时文件和临时文件夹都会被删除。
+
+# Python pathlib模块用法详解
+from pathlib import *
+# 创建PurePath，实际上使用PureWindowsPath
+path = PurePath('my_file.txt')
+print(type(path))
+
+from pathlib import *
+# 创建PurePath，实际上使用PureWindowsPath
+path = PurePath('http:', 'c.biancheng.net', 'python')
+print(path)
