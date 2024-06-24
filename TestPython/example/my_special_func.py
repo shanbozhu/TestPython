@@ -361,3 +361,58 @@ num = intNum()
 print(tuple(num))
 # 通过输出结果可以判断出，list() 和 tuple() 底层实现和 for 循环的遍历过程是类似的。
 # 相比迭代器，生成器最明显的优势就是节省内存空间，即它不会一次性生成所有的数据，而是什么时候需要，什么时候生成。
+
+def simple_generator():
+    yield 1 # yield 执行完当前行语句后暂停程序
+    yield 2
+    yield 3
+# 生成器函数被调用时，返回一个生成器对象
+gen = simple_generator()
+# 通过迭代器协议来访问元素
+print(next(gen))  # 输出 1
+print(next(gen))  # 输出 2
+print(next(gen))  # 输出 3
+# 再次调用会引发 StopIteration 异常，因为生成器中没有更多元素
+
+obj = (i for i in range(0, 10))
+print(obj)
+
+def get_num():
+    i = 0
+    while i < 5:
+        yield i
+        i += 1
+    return i
+obj = get_num()
+for temp in obj:
+    print(temp)
+# print(next(obj))
+
+# 打印结果可以看出，get_num()函数返回的不是i这个整数类型，而是一个生成器对象。值得一提的是，这个函数中依然可以使用 return，定义时不会报错，但是 迭代 生成器对象 时 无法访问 return 的值的。
+def get_num():
+    i = 0
+    while i < 5:
+        x = yield i
+        print('生成器内部返回值：', x)
+        i += 1
+    return i
+obj = get_num()
+print('生成器外部返回值：', next(obj))
+print('生成器外部返回值：', next(obj))
+
+# 生成器通信
+# 通过对比，for-in 语句更加高效，next() 略显繁琐。其实，生成器对象的 send() 方法也能 驱动 生成器运转，但因为涉及 send 的通信功能，所以放在接下来的小节来介绍。
+def get_num():
+    i = 0
+    while i < 5:
+        x = yield i
+        print('生成器内部返回值：', x)
+        i += 1
+    return i
+obj = get_num()
+obj.send(None) # 使用了"obj.send(None)"，这个是因为在生成器对象创建完成后并未执行，无法通过send方法给x传递消息，所以先发送None。在接下来的打印语句中，分别传递了一个字符串和整数，我们运行下查看结果：
+print('生成器外部返回值：', obj.send("我来自外部"))
+print('生成器外部返回值：', obj.send(8))
+# 从运行结果有两点值得注意：
+# send()方法可以传数据，也可以驱动生成器运作。
+# send()方法可以传递多种类型的数据。

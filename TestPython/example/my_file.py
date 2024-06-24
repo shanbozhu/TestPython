@@ -215,3 +215,26 @@ from pathlib import *
 # 创建PurePath，实际上使用PureWindowsPath
 path = PurePath('http:', 'c.biancheng.net', 'python')
 print(path)
+
+with open('my_file.txt', "r", encoding="utf-8") as f1:
+    print(f1)
+    for line in f1:
+        print(line)
+
+with open('my_file.txt', "r", encoding="utf-8") as f2:
+    for line in f2.readlines(): # readlines 如连续调用两次readlines，后面一次返回空列表，因为第一次调用时文件指针已经移至文件内容的末尾，再次读取将从末尾开始，所以第二次读取空。
+        print(line)
+
+import os
+
+# 指定目录
+path = "/Users/wsc/Desktop/Test/TestPython/TestPython/example"
+print(os.walk(path)) # 生成器，生成器属于迭代器
+print(type(os.walk(path)))
+# 遍历目录
+for root, dirs, files in os.walk(path):
+    print('root =', root, 'dirs =', dirs, 'files =', files)
+    for name in files:
+        print(os.path.join(root, name))  # 输出文件路径
+    for name in dirs:
+        print(os.path.join(root, name))  # 输出子目录路径
