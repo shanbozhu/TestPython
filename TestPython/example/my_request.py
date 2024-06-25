@@ -73,8 +73,7 @@ body = {
 }
 
 # 请求方式
-# r = requests.post(url, data=body, headers=header, timeout=2, verify=False) # 内容类型x-www-form-urlencoded
-# r = requests.post(url, json=body, headers=header, timeout=2, verify=False) # 内容类型json
+# r = requests.post(url, params=params, data=body, headers=header, timeout=2, verify=False) # 内容类型x-www-form-urlencoded
 r = requests.post(url, params=params, json=body, headers=header, timeout=2, verify=False)  # 内容类型json
 
 # 解码
