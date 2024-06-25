@@ -101,16 +101,16 @@ r = requests.post(url, params=params, cookies=cookies, headers=headers, json=bod
 
 # 解码
 json_str = str(r.content, 'utf-8')
-print(json_str)
+print("json_str =", json_str)
 
 r.encoding = 'utf-8'
-print(r.text)
+print("r.text =", r.text)
 
 # json转换
 json_dict = json.loads(json_str)
-print(json_dict)
+print("loads for json_dict =", json_dict)
 json_str = json.dumps(json_dict)
-print(json_str)
+print("dumps for json_str =", json_str)
 
 curl_command = curlify.to_curl(r.request) # -H 'Accept-Encoding: gzip, deflate' 输出的curl命令需要去掉这项，否则会提示"在终端输出二进制打乱终端的显示"
 print(curl_command)
