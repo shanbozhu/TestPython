@@ -19,6 +19,7 @@ import requests
 import urllib3
 import json
 import random
+import curlify
 
 # 取消InsecureRequestWarning警告
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -88,3 +89,6 @@ json_dict = json.loads(json_str)
 print(json_dict)
 json_str = json.dumps(json_dict)
 print(json_str)
+
+curl_command = curlify.to_curl(r.request) # -H 'Accept-Encoding: gzip, deflate' 输出的curl命令需要去掉这项，否则会提示在终端输出二进制打乱终端的显示
+print(curl_command)
