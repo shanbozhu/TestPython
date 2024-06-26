@@ -9,7 +9,7 @@ https://stackoverflow.com/questions/44964529/how-to-send-urlencoded-parameters-i
 临时更换安装源:
 pip3 install requests -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com
 
-File: my_request.py
+File: my_request_json.py
 Author: zhushanbo
 Date: 2023/4/21
 Description: 通用请求
@@ -34,7 +34,6 @@ params = {
 
 # 请求头
 headers = {
-    # "Content-Type": "application/x-www-form-urlencoded", # 内容类型x-www-form-urlencoded
     # Content-Type可选设置。Already added when you pass json=
     "Content-Type": "application/json",  # 内容类型json
     "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 12_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16C104 SP-engine/2.24.0 matrixstyle/0 info baiduboxapp/5.1.1.10 (Baidu; P2 12.1.2)",
@@ -74,21 +73,11 @@ body = {
     "source_type": "baidumedia",
     "reply_id": "1122518916369402407",
     "request_id": "38383331323433303437373531393733353736",
-
-    # __start 内容类型x-www-form-urlencoded
-    # "extdata[origin]" : "feed",
-    # "extdata[client_logid]" : "E18940390F8EC74785570C5BE86236F8",
-    # "extdata[s_session]" : "",
-    # __end 内容类型x-www-form-urlencoded
-
-    # __start 内容类型json
     "extdata": {
         "origin": "feed",
         "client_logid": "E18940390F8EC74785570C5BE86236F8",
         "s_session": ""
     },
-    # __end 内容类型json
-
     "key": "1762683039161549402",
     "num": 20,
     "ext": json.dumps(ext),  # json字典转json字符串
@@ -96,8 +85,7 @@ body = {
 }
 
 # 请求方式
-# r = requests.post(url, params=params, cookies=cookies, headers=headers, data=body, timeout=2, verify=False) # 内容类型x-www-form-urlencoded
-r = requests.post(url, params=params, cookies=cookies, headers=headers, json=body, timeout=2, verify=False) # 内容类型json
+r = requests.post(url, params=params, cookies=cookies, headers=headers, json=body, timeout=2, verify=False)
 
 # 解码
 json_str = str(r.content, 'utf-8')
