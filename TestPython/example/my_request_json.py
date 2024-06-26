@@ -86,7 +86,15 @@ body = {
 }
 
 # 请求方式
-r = requests.post(url, params=params, cookies=cookies, headers=headers, json=body, timeout=2, verify=False)
+r = requests.post(
+    url,
+    params=params,
+    cookies=cookies,
+    headers=headers,
+    json=body,
+    timeout=2,
+    verify=False
+)
 
 # 解码
 json_str = str(r.content, 'utf-8')
