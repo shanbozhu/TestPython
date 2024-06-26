@@ -73,9 +73,9 @@ body = {
     "reply_id": "1122518916369402407",
     "request_id": "38383331323433303437373531393733353736",
 
-    "extdata[origin]" : "feed",
-    "extdata[client_logid]" : "E18940390F8EC74785570C5BE86236F8",
-    "extdata[s_session]" : "",
+    "extdata[origin]": "feed",
+    "extdata[client_logid]": "E18940390F8EC74785570C5BE86236F8",
+    "extdata[s_session]": "",
 
     "key": "1762683039161549402",
     "num": 20,
