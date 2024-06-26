@@ -99,5 +99,6 @@ print("loads for json_dict =", json_dict)
 json_str = json.dumps(json_dict)
 print("dumps for json_str =", json_str)
 
+# to curl
 curl_command = curlify.to_curl(r.request) # -H 'Accept-Encoding: gzip, deflate' 输出的curl命令需要去掉这项，否则会提示"在终端输出二进制打乱终端的显示"
 print("curl_command =", curl_command)
