@@ -20,6 +20,7 @@ import urllib3
 import json
 import random
 import curlify
+import urllib.parse
 
 # 取消InsecureRequestWarning警告
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -108,5 +109,8 @@ json_str = json.dumps(json_dict)
 print("dumps for json_str =", json_str)
 
 # to curl
-curl_command = curlify.to_curl(r.request) # -H 'Accept-Encoding: gzip, deflate' 输出的curl命令需要去掉这项，否则会提示"在终端输出二进制打乱终端的显示"
+# -H 'Accept-Encoding: gzip, deflate' 输出的curl命令需要去掉这项，否则会提示"在终端输出二进制打乱终端显示"
+# -H 'Content-Length: 13530' 输出的curl命令需要去掉这项
+curl_command = curlify.to_curl(r.request)
 print("curl_command =", curl_command)
+print("curl_command =", urllib.parse.unquote(curl_command)) # url字符串解码
