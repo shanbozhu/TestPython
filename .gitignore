@@ -1,3 +1,4 @@
 #CocoaPods
 *.pyc
 __pycache__/
+.idea/
