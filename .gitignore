@@ -1,4 +1,5 @@
 #CocoaPods
 *.pyc
 __pycache__/
+.venv/
 .idea/vcs.xml
