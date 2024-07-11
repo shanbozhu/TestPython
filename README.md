@@ -14,7 +14,7 @@
 
 ### 3. 导出模块
 
-`pip freeze > requirements.txt`
+必须在`虚拟环境`中执行`pip freeze > requirements.txt`
 
 ### 4. 打包项目
 
