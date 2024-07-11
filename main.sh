@@ -56,3 +56,8 @@ $current_dir/$python_file
 echo "Python脚本执行完成。"
 # 取消激活虚拟环境
 deactivate
+
+
+# TODO:
+# 1. 非首次
+# 2. .installed_packages.txt 文件可以删除
