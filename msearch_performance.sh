@@ -38,14 +38,18 @@ if [ $? -eq 0 ]; then
     fi
   else
     echo "没有模块列表文件，无法在虚拟环境中批量自动安装模块。Python脚本可能会执行失败！！！"
+    echo "若Python脚本执行失败，提示缺少模块，请按照下面步骤手动执行。"
+    echo "  1. 执行命令激活虚拟环境：source $venv_dir/bin/activate"
+    echo "  2. 在虚拟环境中安装缺失的模块：pip3 install xyz，xyz表示缺失的模块"
+    echo "  3. 执行执行Python脚本：$current_dir/msearch_performance.py"
   fi
 else
   echo "虚拟环境激活失败，请重试。"
   exit 1
 fi
 # 执行脚本
-echo "正在虚拟环境中执行Python脚本..."
+echo "正在执行Python脚本..."
 $current_dir/msearch_performance.py
-echo "虚拟环境中Python脚本执行完成。"
+echo "Python脚本执行完成。"
 # 取消激活虚拟环境
 deactivate
