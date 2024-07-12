@@ -2,7 +2,7 @@
 
 current_dir=$(pwd)
 venv_dir="$current_dir/.venv"
-python_file="msearch_performance.py"
+python_file="your_python_file.py"
 
 # 虚拟环境是否存在
 if [ ! -d "$venv_dir" ]; then
@@ -40,23 +40,21 @@ if [ $? -eq 0 ]; then
       fi
     fi
   else
-    echo "没有模块列表文件，无法在虚拟环境中批量自动安装模块。Python脚本可能会执行失败！！！"
-    echo "若Python脚本执行失败，提示缺少模块，请按照下面步骤手动执行。"
-    echo "  1. 执行命令激活虚拟环境：source $venv_dir/bin/activate"
+    echo "没有模块列表文件，无法在虚拟环境中批量自动安装模块。请按照下面步骤手动执行！！！"
+    echo "  1. 执行Python脚本：$current_dir/$python_file 根据失败提示查看缺失的模块。"
     echo "  2. 在虚拟环境中安装缺失的模块：pip3 install xyz，xyz表示缺失的模块。"
-    # echo "  3. 执行Python脚本：$current_dir/$python_file"
-    echo "  3. 执行Python脚本：./main.sh"
-    echo "  4. 重复步骤2和3安装所有缺失的模块，直至Python脚本执行成功。"
+    echo "  3. 重复步骤1和2安装所有缺失的模块，直至Python脚本执行成功。"
+    exit 1
   fi
 else
   echo "虚拟环境激活失败，请重试。"
   exit 1
 fi
+# 虚拟环境启动成功
+echo "虚拟环境已经启动，可以开始执行Python脚本了..."
 # 执行脚本
-echo "正在执行Python脚本..."
-"$current_dir/$python_file"
-echo "Python脚本执行完成。"
+# "$current_dir/$python_file"
 # 导出项目中已安装的模块
 pip3 freeze > "$requirements"
 # 取消激活虚拟环境
-deactivate
+# deactivate
