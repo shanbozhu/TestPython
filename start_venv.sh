@@ -1,4 +1,6 @@
 #!/bin/bash
+# usage:
+# . start_venv.sh
 
 current_dir=$(pwd)
 venv_dir="$current_dir/.venv"
@@ -54,4 +56,4 @@ echo "虚拟环境已经启动，可以开始执行Python脚本了..."
 # 执行脚本
 # "$current_dir/$python_file"
 # 导出项目中已安装的模块
-pip3 freeze > "$requirements"
+# pip3 freeze > "$requirements"
