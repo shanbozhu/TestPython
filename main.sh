@@ -6,7 +6,6 @@ python_file="your_python_file.py"
 
 # 虚拟环境是否存在
 if [ ! -d "$venv_dir" ]; then
-  # echo "$venv_dir 虚拟环境不存在，正在创建..."
   echo "虚拟环境不存在，正在创建..."
   python3 -m venv .venv
   if [ $? -eq 0 ]; then
@@ -56,5 +55,3 @@ echo "虚拟环境已经启动，可以开始执行Python脚本了..."
 # "$current_dir/$python_file"
 # 导出项目中已安装的模块
 pip3 freeze > "$requirements"
-# 取消激活虚拟环境
-# deactivate
