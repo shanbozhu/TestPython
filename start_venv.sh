@@ -2,6 +2,8 @@
 # usage:
 # . start_venv.sh
 
+echo "需要使用. start_venv.sh执行当前shell脚本！！！"
+
 current_dir=$(pwd)
 venv_dir="$current_dir/.venv"
 python_file="your_python_file.py"
