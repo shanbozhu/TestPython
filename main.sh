@@ -22,16 +22,18 @@ source $venv_dir/bin/activate
 if [ $? -eq 0 ]; then
   # requirements.txt文件是否存在
   requirements="$current_dir/requirements.txt"
+  installed_packages="$current_dir/.installed_packages.txt"
   if [ -f "$requirements" ]; then
-    pip3 freeze > .installed_packages.txt
+    # 导出项目中已安装的模块
+    pip3 freeze > "$installed_packages"
     if [ $? -ne 0 ]; then
-      echo "pip freeze 执行失败，请重试。"
+      echo "项目中已安装的模块导出失败，请重试。"
       exit 1
     fi
-    diff "$current_dir/requirements.txt" "$current_dir/.installed_packages.txt" &> /dev/null
+    diff "$requirements" "$installed_packages" &> /dev/null
     if [ $? -ne 0 ]; then
       echo "虚拟环境中模块缺失，正在安装..."
-      pip3 install -r requirements.txt &> /dev/null
+      pip3 install -r "$requirements" &> /dev/null
       if [ $? -ne 0 ]; then
         echo "虚拟环境中模块安装失败，请重试。"
         exit 1
@@ -52,12 +54,9 @@ else
 fi
 # 执行脚本
 echo "正在执行Python脚本..."
-$current_dir/$python_file
+"$current_dir/$python_file"
 echo "Python脚本执行完成。"
+# 导出项目中已安装的模块
+pip3 freeze > "$requirements"
 # 取消激活虚拟环境
 deactivate
-
-
-# TODO:
-# 1. 非首次
-# 2. .installed_packages.txt 文件可以删除
