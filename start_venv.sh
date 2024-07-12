@@ -47,7 +47,7 @@ if [ $? -eq 0 ]; then
     echo "  1. 执行Python脚本：$current_dir/$python_file 根据失败提示查看缺失的模块。"
     echo "  2. 在虚拟环境中安装缺失的模块：pip3 install xyz，xyz表示缺失的模块。"
     echo "  3. 重复步骤1和2安装所有缺失的模块，直至Python脚本执行成功。"
-    exit 1
+    # exit 1
   fi
 else
   echo "虚拟环境激活失败，请重试。"
