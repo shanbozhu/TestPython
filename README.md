@@ -35,7 +35,7 @@
 
 2. 激活新的虚拟环境
    1. Windows执行：`.venv\Scripts\activate`
-   2. MacOS/Linux执行：`source .venv/bin/activate`
+   2. macOS/Linux执行：`source .venv/bin/activate`
 
 3. 安装模块到新的虚拟环境
 `pip install -r requirements.txt`
