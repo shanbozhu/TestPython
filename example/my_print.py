@@ -52,6 +52,26 @@ s2 = "Hex: \x31\x32\x33\x78\x79\x7A"
 print(s1)
 print(s2)
 
+# 1、使用 f-string（Python 3.6 及以上版本）：
+count = 10  # 示例变量
+print(f"被裁剪的描述表一共有：{count}个")
+
+# 2、使用 format 方法：
+count = 10  # 示例变量
+print("被裁剪的描述表一共有：{}个".format(count))
+
+# 3、使用字符串连接：
+count = 10  # 示例变量
+print("被裁剪的描述表一共有：" + str(count) + "个")
+
+# 4、使用 % 操作符：
+count = 10  # 示例变量
+print("被裁剪的描述表一共有：%d个" % count)
+
+# 5、直接输出
+count = 10
+print("被裁剪的描述表一共有：", count, "个", sep="")
+
 ########## 类型转换
 
 height = 70.0
