@@ -1,4 +1,10 @@
-### 1. 安装模块
+### 1. 安装python
+
+`brew install python`
+
+安装`python`时会自动安装`pip`
+
+### 2. 安装模块
 
 `pip install urllib3 -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com`
 
@@ -8,21 +14,21 @@
 
 `pip install -r requirements.txt`
 
-### 2. 卸载模块
+### 3. 卸载模块
 
 `pip uninstall urllib3`
 
-### 3. 导出模块
+### 4. 导出模块
 
 必须在`虚拟环境`中执行`pip freeze > requirements.txt`
 
-### 4. 打包项目
+### 5. 打包项目
 
 1. 使用`pip freeze > requirements.txt`导出当前项目的所有模块。
 
 2. `压缩`当前项目，注意不要包含`.venv`虚拟环境目录。
 
-### 5. 执行项目
+### 6. 执行项目
 
 将`项目压缩包`复制到其他电脑，下面两种方式均可`解压`后在虚拟环境中执行。
 
