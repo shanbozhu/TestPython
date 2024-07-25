@@ -6,6 +6,8 @@
 
 ### 2. 安装模块
 
+推荐在`虚拟环境`中安装模块
+
 `pip install urllib3 -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com`
 
 `pip install 'urllib3<2.0'`
@@ -16,11 +18,15 @@
 
 ### 3. 卸载模块
 
+推荐在`虚拟环境`中卸载模块
+
 `pip uninstall urllib3`
 
 ### 4. 导出模块
 
-必须在`虚拟环境`中执行`pip freeze > requirements.txt`
+必须在`虚拟环境`中导出模块
+
+`pip freeze > requirements.txt`
 
 ### 5. 打包项目
 
@@ -32,7 +38,7 @@
 
 将`项目压缩包`复制到其他电脑，下面两种方式均可`解压`后在虚拟环境中执行。
 
-虚拟环境包含当前操作系统安装的`Python解释器副本`和项目依赖的`三方模块`
+虚拟环境：包含当前操作系统安装的`Python解释器副本`和项目依赖的`三方模块`
 
 > 方式一：通过命令行
 
