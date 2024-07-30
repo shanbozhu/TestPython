@@ -52,7 +52,7 @@
 3. 安装模块到新的虚拟环境
 `pip install -r requirements.txt`
 
-4. 执行`项目的Python脚本`。
+4. 执行项目的Python脚本。
 
 5. 取消激活新的虚拟环境
 `deactivate`
@@ -61,13 +61,13 @@
 
 1. 使用`IDEA`等软件打开项目目录。
 
-2. 点击`配置Python解释器`，弹出的对话框中依次点击`依赖`->`模块SDK`->`添加Python SDK...`，弹出的对话框中为当前项目创建`新的虚拟环境`。
+2. 点击`配置Python解释器`，弹出的对话框中依次点击`依赖`->`模块SDK`->`添加Python SDK...`，弹出的对话框中为当前项目创建新的虚拟环境。
 ```
 此处也可以先用命令行方式创建新的虚拟环境，然后添加这个环境。
 ```
 
-3. 点击`IDEA`等软件的终端，执行`pip install -r requirements.txt`将模块安装到`新的虚拟环境`。
+3. 点击`IDEA`等软件的终端，执行`pip install -r requirements.txt`将模块安装到新的虚拟环境。
 
-4. 执行`项目的Python脚本`。
+4. 执行项目的Python脚本。
 
 参考文档：https://zhuanlan.zhihu.com/p/700249286
