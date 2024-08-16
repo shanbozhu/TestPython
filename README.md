@@ -2,6 +2,8 @@
 
 `brew install python`
 
+`python --version`
+
 安装`python`时会自动安装`pip`
 
 ### 2. 安装模块
