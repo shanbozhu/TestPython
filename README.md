@@ -68,7 +68,7 @@
 此处也可以先用命令行方式创建新的虚拟环境，然后IDE添加这个环境。
 ```
 
-3. 点击`IDEA`等软件的终端，执行`pip install -r requirements.txt`将模块安装到新的虚拟环境。
+3. 点击`IDEA`等软件自带的终端，执行`pip install -r requirements.txt`将模块安装到新的虚拟环境。
 
 4. 执行项目的Python脚本。
 
