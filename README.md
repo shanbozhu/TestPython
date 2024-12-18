@@ -74,3 +74,13 @@
 1. 使用`pip freeze > requirements.txt`导出当前项目的所有模块。
 
 2. `压缩`当前项目，注意不要包含`.venv`虚拟环境目录。
+
+### 7. 调试项目
+
+`python -m pdb xx.py`
+
+或使用IDE：
+
+收费：`IDEA + Python插件`
+
+免费：`VSCode + Python插件`
