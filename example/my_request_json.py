@@ -33,6 +33,10 @@ url = "https://mbd.baidu.com/icomment/v1/comment/rlist?appname=baiduboxlite&cfro
 params = {
     "xxx": "12345你好/世界"
 }
+# 下面写法也可以
+# params = [
+#     ("xxx", "12345你好/世界")
+# ]
 
 # cookie可以单独传，request库会在内部自动将其放到headers里，不用手动放到headers里
 cookies = {
