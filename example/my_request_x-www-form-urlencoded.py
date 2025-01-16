@@ -9,7 +9,7 @@ https://stackoverflow.com/questions/44964529/how-to-send-urlencoded-parameters-i
 临时更换安装源：
 pip3 install requests -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com
 
-File: my_request_form.py
+File: my_request_x-www-form-urlencoded.py
 Author: zhushanbo
 Date: 2023/4/21
 Description: 通用请求
