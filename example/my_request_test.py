@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 """
-参考文档:
+参考文档：
 https://blog.csdn.net/wanghao3616/article/details/127860811
 https://stackoverflow.com/questions/44964529/how-to-send-urlencoded-parameters-in-post-request-in-python
 
-临时更换安装源:
+临时更换安装源：
 pip3 install requests -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com
 
 File: my_request.py
