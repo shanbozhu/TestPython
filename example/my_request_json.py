@@ -104,29 +104,29 @@ r = requests.post(
 
 # utf-8解码
 json_str = str(r.content, 'utf-8')
-print("json_str =", json_str)
+print("------------ json_str =", json_str)
 
 # r.encoding = 'utf-8'
-print("r.text =", r.text)
-print("r.url =", r.url)
+print("------------ r.text =", r.text)
+print("------------ r.url =", r.url)
 
 # json转换
 json_dict = json.loads(json_str)
-print("loads for json_dict =", json_dict)
+print("------------ loads for json_dict =", json_dict)
 json_str = json.dumps(json_dict)
-print("dumps for json_str =", json_str)
+print("------------ dumps for json_str =", json_str)
 
 # to curl
 # -H 'Accept-Encoding: gzip, deflate' 输出的curl命令需要去掉这项，否则会提示"在终端输出二进制打乱终端显示"
 # -H 'Content-Length: 13530' 输出的curl命令需要去掉这项
 curl_command = curlify.to_curl(r.request)
-print("curl_command =", curl_command)
-print("curl_command =", urllib.parse.unquote(curl_command)) # url解码
+print("------------ curl_command =", curl_command)
+print("------------ curl_command =", urllib.parse.unquote(curl_command)) # url解码
 
 # url编码、url解码
 # audiotoken为已经url编码过的字符串
 audiotoken = "T6%2FcW50h0FNoMw0ITPhwVSKgLaAzHFMDq99n4su2zlr%2FMztrM1FwQx5ctQv8co4fVirkMzWOCCZ8uHAQjrLCzqtVYGpzyZJwM8VYX27wTKBf62OqW0xxK9i9nxmi6QG%2FolgnN5EIDF2U55EOM2ajQM3eESeqYwcWLcRL%2BLYYxDXYjjmxNdvckc2CdNx2RRFtXgur%2Bw%2FoMbWk%2F8vI%2BR3syS47Z3L0%2F7QlAdFMT6DDcd4T1P4t3efsnU0vBvOx%2Fwc0"
 audiotoken_decode = urllib.parse.unquote(audiotoken)
-print("audiotoken_decode =", audiotoken_decode) # url解码
+print("------------ audiotoken_decode =", audiotoken_decode) # url解码
 audiotoken_encode = urllib.parse.quote(audiotoken_decode, safe='') # safe表示不需要url编码的字符集合，默认是/，表示默认/是不需要参与url编码的。这里传''空，表示所有字符都需要url编码。相当于oc里面的escape参数。
-print("audiotoken_encode =", audiotoken_encode) # url编码
+print("------------ audiotoken_encode =", audiotoken_encode) # url编码
