@@ -97,7 +97,7 @@ r = requests.post(
     verify=False
 )
 
-# 解码
+# utf-8解码
 json_str = str(r.content, 'utf-8')
 print("json_str =", json_str)
 
@@ -115,4 +115,4 @@ print("dumps for json_str =", json_str)
 # -H 'Content-Length: 13530' 输出的curl命令需要去掉这项
 curl_command = curlify.to_curl(r.request)
 print("curl_command =", curl_command)
-print("curl_command =", urllib.parse.unquote(curl_command)) # url字符串解码
+print("curl_command =", urllib.parse.unquote(curl_command)) # url解码
