@@ -94,6 +94,6 @@ os.system(f'ffplay -protocol_whitelist "file,crypto,https,tcp,tls,data" -headers
 
 # -H 'Accept-Encoding: gzip, deflate' 输出的curl命令需要去掉这项，否则会提示"在终端输出二进制打乱终端显示"
 # -H 'Content-Length: 13530' 输出的curl命令需要去掉这项
-curl_command = curlify.to_curl(response.request)
-print("------------ curl_command =", curl_command)
-print("------------ curl_command =", urllib.parse.unquote(curl_command))
+# curl_command = curlify.to_curl(response.request)
+# print("------------ curl_command =", curl_command)
+# print("------------ curl_command =", urllib.parse.unquote(curl_command))
