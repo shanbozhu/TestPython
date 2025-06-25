@@ -3,3 +3,5 @@
 __pycache__/
 .venv/
 .idea/vcs.xml
+
+video_stream_qrcode.svg
