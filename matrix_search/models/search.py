@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from TestPython.models.search_data import SearchData
+from TestPython.matrix_search.models.search_data import SearchData
 
 class Search(object):
 
