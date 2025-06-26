@@ -80,7 +80,6 @@ print(f"------------ Pasted from clipboard: {pasted_text}")
 
 # 显式为 URL 添加双引号
 safe_url = f'"{response.url}"'
-# user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
 user_agent = 'dumedia/7.84.0.7'
 os.system(f'ffplay -allowed_extensions ALL -protocol_whitelist "http,file,crypto,https,tcp,tls,data" -headers "User-Agent: {user_agent}\r\n" -v debug ' + safe_url)
 
