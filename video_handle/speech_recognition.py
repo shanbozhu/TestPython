@@ -9,3 +9,6 @@ result = model.transcribe("/Users/zhushanbo/Desktop/extracted_audio.wav")
 # 提取并展示文本内容
 transcribed_text = result["text"]
 transcribed_text[:1000]  # 显示前 1000 个字符预览
+
+
+print("------------ transcribed_text =", transcribed_text)
