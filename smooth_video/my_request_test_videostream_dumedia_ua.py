@@ -50,6 +50,7 @@ headers = {
 timestamp_ms = int(time.time() * 1000)
 print(f"------------ 毫秒时间戳：{timestamp_ms}")
 
+# params会在内部自动进行url编码
 params = [
     ('isfull', '1'),
     ('channel', 'lite_rapid'),
@@ -58,16 +59,6 @@ params = [
     ('version', '1.3.2'),
     ('dp-logid', '35681100369575570027'),
 ]
-
-# params会在内部自动进行url编码
-# params = {
-#     'isfull': '1',
-#     'channel': 'netdisk_bdmin',
-#     'time': f'{timestamp_ms}',
-#     'version': '1.3.2',
-#     'clienttype': '32',
-#     'dp-logid': '35681100369575570027',
-# }
 
 response = requests.get('https://pan.baidu.com/api/wechat/videostream.m3u8?audiotoken=' + my_request_test_videocheck.request_audiotoken(), params=params, headers=headers)
 
@@ -89,6 +80,7 @@ print(f"------------ Pasted from clipboard: {pasted_text}")
 
 # 显式为 URL 添加双引号
 safe_url = f'"{response.url}"'
+# user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
 user_agent = 'dumedia/7.84.0.7'
 os.system(f'ffplay -allowed_extensions ALL -protocol_whitelist "http,file,crypto,https,tcp,tls,data" -headers "User-Agent: {user_agent}\r\n" -v debug ' + safe_url)
 
