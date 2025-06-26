@@ -90,7 +90,7 @@ print(f"------------ Pasted from clipboard: {pasted_text}")
 # 显式为 URL 添加双引号
 safe_url = f'"{response.url}"'
 user_agent = 'dumedia/7.84.0.7'
-os.system(f'ffplay -protocol_whitelist "http,file,crypto,https,tcp,tls,data" -headers "User-Agent: {user_agent}\r\n" -v debug ' + safe_url)
+os.system(f'ffplay -allowed_extensions ALL -protocol_whitelist "http,file,crypto,https,tcp,tls,data" -headers "User-Agent: {user_agent}\r\n" -v debug ' + safe_url)
 
 # -H 'Accept-Encoding: gzip, deflate' 输出的curl命令需要去掉这项，否则会提示"在终端输出二进制打乱终端显示"
 # -H 'Content-Length: 13530' 输出的curl命令需要去掉这项
