@@ -68,7 +68,7 @@ print("------------ r.url =", response.url)
 # 生成二维码
 qr = segno.make(response.url)
 # 或保存为矢量格式（SVG 更适合打印或大尺寸展示）
-qr.save("./smooth_video/video_stream_qrcode.svg")
+qr.save("./video_stream_qrcode.svg")
 
 # 要拷贝到剪贴板的字符串
 text = response.text
