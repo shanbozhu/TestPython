@@ -56,8 +56,8 @@ params = [
     ('channel', 'lite_rapid'),
     ('clienttype', '291'),
     ('time', f'{timestamp_ms}'),
-    ('version', '1.3.2'),
-    ('dp-logid', '35681100369575570027'),
+    # ('version', '1.3.2'),
+    # ('dp-logid', '35681100369575570027'),
 ]
 
 response = requests.get('https://pan.baidu.com/api/wechat/videostream.m3u8?audiotoken=' + my_request_test_videocheck.request_audiotoken(), params=params, headers=headers)
