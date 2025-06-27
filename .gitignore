@@ -2,6 +2,7 @@
 *.pyc
 __pycache__/
 .venv/
-.idea/vcs.xml
+.idea/
+.vscode/
 
 video_stream_qrcode.svg
