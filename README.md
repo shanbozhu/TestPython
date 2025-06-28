@@ -32,8 +32,8 @@
 `注意：若系统安装有多个版本的python，则使用指定版本的python可以创建含有指定版本python的虚拟环境`
 
 2. 激活虚拟环境
-   1. Windows执行：`.venv\Scripts\activate`
-   2. macOS/Linux执行：`source .venv/bin/activate`
+	1. Windows执行：`.venv\Scripts\activate`
+	2. macOS/Linux执行：`source .venv/bin/activate`
 
 3. 安装模块到虚拟环境
 `pip install -r requirements.txt`
