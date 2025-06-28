@@ -96,9 +96,9 @@
 
 安装整个环境：
 
-`conda env create -f environment.yml`
+1. 指定路径下创建：`conda env create -f environment.yml --prefix .conda`
 
-`conda env create -f environment.yml --prefix .conda`
+2. 默认路径下创建：`conda env create -f environment.yml`
 
 ### 4. 卸载模块
 
