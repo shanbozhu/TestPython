@@ -20,51 +20,59 @@
 
 ### 2. 执行项目
 
-将项目`压缩包`复制到电脑，下面两种方式均可`解压`后在虚拟环境中执行。
+将项目`压缩包`复制到电脑，下面三种方式均可`解压`后在虚拟环境中执行。
 
 虚拟环境：含有`Python解释器`和`依赖模块`。
 
 > 方式一：通过`命令行`
 
-1. 创建虚拟环境
-`python -m venv .venv`
+一、通过Python自带的**Virtualenv**创建虚拟环境。
 
-`注意：若系统安装有多个版本的python，则使用指定版本的python可以创建含有指定版本python的虚拟环境`
+1. 进入项目根目录执行：`python -m venv .venv`
 
 2. 激活虚拟环境
 	1. Windows执行：`.venv\Scripts\activate`
 	2. macOS/Linux执行：`source .venv/bin/activate`
 
-3. 安装模块到虚拟环境
-`pip install -r requirements.txt`
+3. 安装模块到虚拟环境：`pip install urllib3`
 
 4. 执行项目的Python脚本。
 
-5. 取消激活虚拟环境
-`deactivate`
+5. 取消激活虚拟环境：`deactivate`
+
+二、通过**conda**创建虚拟环境
+
+1. 进入项目根目录执行：
+	1. 指定路径下创建：`conda create --prefix myenv python=3.10`
+	2. 默认路径下创建：`conda create --name myenv python=3.10`
+
+2. 激活虚拟环境：`conda activate myenv`
+
+3. 安装模块到虚拟环境：`conda install urllib3`
+
+4. 执行项目的Python脚本。
+
+5. 取消激活虚拟环境：`conda deactivate`
 
 > 方式二：通过`IDEA`
 
-1. 使用`IDEA`软件打开项目目录。
-`注意：若打开项目目录后，只显示文件不显示目录，左侧栏颜色为黄色，则需要先删除项目目录下的.idea目录，然后重新打开项目目录`
+1. 使用`IDEA`软件打开项目目录。`注意：若打开项目目录后，只显示文件不显示目录，左侧栏颜色为黄色，则需要先删除项目目录下的.idea目录，然后重新打开项目目录`
 
 2. 依次点击：
 	1. 文件 -> 项目结构... -> 平台设置 -> SDK -> 清理无效的（变红色的）SDK。
-	2. 项目设置 -> 项目 -> SDK -> 从磁盘添加 Python SDK -> Virtualenv环境 -> 设置虚拟环境。
-	`此处也可以先用命令行方式创建虚拟环境，然后IDE添加这个环境。`
+	2. 项目设置 -> 项目 -> SDK -> 从磁盘添加 Python SDK... -> Virtualenv环境 或 Conda环境 -> 设置虚拟环境。`此处也可以先用命令行方式创建虚拟环境，然后IDEA添加这个环境。`
 
-3. 点击`IDEA`软件自带的终端，执行`pip install -r requirements.txt`将模块安装到虚拟环境。
+3. 点击`IDEA`软件自带的终端，执行`pip install urllib3`将模块安装到虚拟环境。
 
 4. 执行项目的Python脚本。
 
 > 方式三：通过`VSCode`
 
-1. 通过`命令行`方式创建虚拟环境。
+1. 使用`VSCode`软件打开项目目录。`注意：若打开项目目录后异常，则需要先删除项目目录下的.vscode目录，然后重新打开项目目录`
 
-2. 使用`VSCode`软件打开项目目录。
-`注意：若打开项目目录后异常，则需要先删除项目目录下的.vscode目录，然后重新打开项目目录`
+2. 依次点击：底部状态栏Python版本号 -> 选择解释器 -> 设置虚拟环境。`此处也可以先用命令行方式创建虚拟环境，然后VSCode添加这个环境。`
 
-3. 点击`VSCode`软件自带的终端，执行`pip install -r requirements.txt`将模块安装到虚拟环境。
+3. 点击`VSCode`软件自带的终端，执行`pip install urllib3`将模块安装到虚拟环境。
 
 4. 执行项目的Python脚本。
 
