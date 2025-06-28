@@ -62,7 +62,7 @@
 	1. 文件 -> 项目结构... -> 平台设置 -> SDK -> 清理无效的（变红色的）SDK。
 	2. 项目设置 -> 项目 -> SDK -> 从磁盘添加 Python SDK... -> Virtualenv环境 或 Conda环境 -> 设置虚拟环境。`此处也可以先用命令行方式创建虚拟环境，然后IDEA添加这个环境。`
 
-3. 点击`IDEA`软件自带的终端，执行`pip install urllib3`将模块安装到虚拟环境。
+3. 点击`IDEA`软件自带的终端，执行`pip install -r requirements.txt`将模块安装到虚拟环境。
 
 4. 执行项目的Python脚本。
 
@@ -72,7 +72,7 @@
 
 2. 依次点击：底部状态栏Python版本号 -> 选择解释器 -> 设置虚拟环境。`此处也可以先用命令行方式创建虚拟环境，然后VSCode添加这个环境。`
 
-3. 点击`VSCode`软件自带的终端，执行`pip install urllib3`将模块安装到虚拟环境。
+3. 点击`VSCode`软件自带的终端，执行`pip install -r requirements.txt`将模块安装到虚拟环境。
 
 4. 执行项目的Python脚本。
 
