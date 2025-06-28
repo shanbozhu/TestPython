@@ -43,10 +43,10 @@
 二、通过**conda**创建虚拟环境
 
 1. 进入项目根目录执行：
-	1. 指定路径下创建：`conda create --prefix myenv python=3.10`
-	2. 默认路径下创建：`conda create --name myenv python=3.10`
+	1. 指定路径下创建：`conda create --prefix .conda python=3.10`
+	2. 默认路径下创建：`conda create --name .conda python=3.10`
 
-2. 激活虚拟环境：`conda activate myenv`
+2. 激活虚拟环境：`conda activate .conda`
 
 3. 安装模块到虚拟环境：`conda install urllib3`
 
@@ -62,7 +62,7 @@
 	1. 文件 -> 项目结构... -> 平台设置 -> SDK -> 清理无效的（变红色的）SDK。
 	2. 项目设置 -> 项目 -> SDK -> 从磁盘添加 Python SDK... -> Virtualenv环境 或 Conda环境 -> 设置虚拟环境。`此处也可以先用命令行方式创建虚拟环境，然后IDEA添加这个环境。`
 
-3. 点击`IDEA`软件自带的终端，执行`pip install -r requirements.txt`将模块安装到虚拟环境。
+3. 点击`IDEA`软件自带的终端，将模块安装到虚拟环境。
 
 4. 执行项目的Python脚本。
 
@@ -72,13 +72,13 @@
 
 2. 依次点击：底部状态栏Python版本号 -> 选择解释器 -> 设置虚拟环境。`此处也可以先用命令行方式创建虚拟环境，然后VSCode添加这个环境。`
 
-3. 点击`VSCode`软件自带的终端，执行`pip install -r requirements.txt`将模块安装到虚拟环境。
+3. 点击`VSCode`软件自带的终端，将模块安装到虚拟环境。
 
 4. 执行项目的Python脚本。
 
 参考文档：https://zhuanlan.zhihu.com/p/700249286
 
-### 3. 安装模块
+### 3. 安装模块或环境
 
 推荐在`虚拟环境`中安装模块
 
@@ -90,23 +90,41 @@
 
 `pip install -r requirements.txt`
 
+如果是conda创建的虚拟环境，则安装模块：
+
+`conda install urllib3`
+
+安装整个环境：
+
+`conda env create -f environment.yml`
+
+`conda env create -f environment.yml --prefix .conda`
+
 ### 4. 卸载模块
 
 推荐在`虚拟环境`中卸载模块
 
 `pip uninstall urllib3`
 
-### 5. 导出模块
+如果是conda创建的虚拟环境，则：
+
+`conda uninstall urllib3`
+
+### 5. 导出模块或环境
 
 必须在`虚拟环境`中导出模块
 
 `pip freeze > requirements.txt`
 
+如果是conda创建的虚拟环境，则导出整个环境：
+
+`conda env export > environment.yml`
+
 ### 6. 打包项目
 
-1. 使用`pip freeze > requirements.txt`导出当前项目的所有模块。
+1. 使用`导出模块或环境`中的命令导出项目中的模块或环境。
 
-2. `压缩`当前项目，注意不要包含`.venv`虚拟环境目录。
+2. `压缩`当前项目，注意不要包含`.venv`或`.conda`虚拟环境目录。
 
 ### 7. 调试项目
 
