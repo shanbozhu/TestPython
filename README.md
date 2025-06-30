@@ -40,6 +40,8 @@
 
 5. 取消激活虚拟环境：`deactivate`
 
+注：当前虚拟环境中的Python是系统安装Python的引用。
+
 二、通过**conda**创建虚拟环境
 
 1. 进入项目根目录执行：
@@ -53,6 +55,8 @@
 4. 执行项目的Python脚本。
 
 5. 取消激活虚拟环境：`conda deactivate`
+
+注：当前虚拟环境中的Python是conda下载的Python。
 
 > 方式二：通过`IDEA`
 
