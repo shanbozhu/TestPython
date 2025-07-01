@@ -142,7 +142,7 @@
 
 ---
 
-### 1. conda常用命令
+### 1. 项目管理
 <table>
     <tr>
         <td><b>语言</b></td>
@@ -157,16 +157,20 @@
         <td>podfile</td>
     </tr>
     <tr>
-        <td>Python</td>
+        <td rowspan="3">Python</td>
         <td>python</td>
         <td>pip</td>
         <td>requirements.txt</td>
     </tr>
     <tr>
-        <td>Python </td>
         <td>python</td>
         <td>conda</td>
         <td>environment.yml</td>
+    </tr>
+    <tr>
+        <td>python</td>
+        <td>uv</td>
+        <td>pyproject.toml</td>
     </tr>
     <tr>
         <td>TypeScript/JavaScript</td>
