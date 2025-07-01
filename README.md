@@ -26,7 +26,7 @@
 
 > 方式一：通过`命令行`
 
-一、通过Python自带的**Virtualenv**创建虚拟环境。
+一、通过Python自带的**venv**创建虚拟环境。
 
 1. 进入项目根目录执行：`python -m venv .venv`
 
@@ -139,3 +139,60 @@
 收费：`IDEA + Python插件`
 
 免费：`VSCode + Python插件`
+
+---
+
+### 1. conda常用命令
+<table>
+    <tr>
+        <td><b>语言</b></td>
+        <td><b>编译器/解释器</b></td>
+        <td><b>包管理工具</b></td>
+        <td><b>配置文件</b></td>
+    </tr>
+    <tr>
+        <td>OC/Swift</td>
+        <td>Xcode</td>
+        <td>pod</td>
+        <td>podfile</td>
+    </tr>
+    <tr>
+        <td>Python</td>
+        <td>python</td>
+        <td>pip</td>
+        <td>requirements.txt</td>
+    </tr>
+    <tr>
+        <td>Python </td>
+        <td>python</td>
+        <td>conda</td>
+        <td>environment.yml</td>
+    </tr>
+    <tr>
+        <td>TypeScript/JavaScript</td>
+        <td>node</td>
+        <td>npm</td>
+        <td>package.json</td>
+    </tr>
+</table>
+
+### 2. conda常用命令
+```
+1. 查看已安装的包
+conda list
+2. 退出环境
+conda deactivate
+3. 删除环境
+conda env remove --name ENV_NAME
+conda env remove --prefix /path/to/ENV_NAME
+4. 查看所有环境
+conda env list
+5. 指定渠道
+conda install -c conda-forge PACKAGE_NAME
+6. 更新 Conda 本身
+conda update conda
+7. 更新所有已安装的包
+conda update --all
+8. 清理未使用的包和缓存
+conda clean --all
+```
