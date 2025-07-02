@@ -149,34 +149,39 @@
         <td><b>编译器/解释器</b></td>
         <td><b>包管理工具</b></td>
         <td><b>配置文件</b></td>
+        <td><b>依赖隔离</b></td>
+        <td><b>编译器/解释器隔离</b></td>
     </tr>
     <tr>
         <td>OC/Swift</td>
         <td>Xcode</td>
         <td>pod</td>
         <td>podfile</td>
+        <td>pod支持</td>
+        <td>不支持。全局安装多个版本xcode后可以支持</td>
     </tr>
     <tr>
-        <td rowspan="3">Python</td>
+        <td rowspan="2">Python</td>
         <td>python</td>
         <td>pip</td>
         <td>requirements.txt</td>
+        <td>pip不支持。依赖默认是全局安装的，结合venv虚拟环境后可以支持</td>
+        <td>不支持。结合pyenv安装多个版本python后可以支持</td>
     </tr>
     <tr>
         <td>python</td>
         <td>conda</td>
         <td>environment.yml</td>
-    </tr>
-    <tr>
-        <td>python</td>
-        <td>uv</td>
-        <td>pyproject.toml</td>
+        <td>conda支持</td>
+        <td>conda支持</td>
     </tr>
     <tr>
         <td>TypeScript/JavaScript</td>
         <td>node</td>
         <td>npm</td>
         <td>package.json</td>
+        <td>npm支持</td>
+        <td>不支持。结合nvm安装多个版本node后可以支持</td>
     </tr>
 </table>
 
