@@ -158,7 +158,7 @@
         <td>pod</td>
         <td>podfile</td>
         <td>pod支持</td>
-        <td>不支持。全局安装多个版本xcode后可以支持</td>
+        <td>不支持。全局安装多个版本Xcode后可以支持</td>
     </tr>
     <tr>
         <td rowspan="2">Python</td>
