@@ -161,7 +161,7 @@
         <td>不支持。安装多个版本Xcode后可以支持</td>
     </tr>
     <tr>
-        <td rowspan="2">Python</td>
+        <td rowspan="3">Python</td>
         <td>python</td>
         <td>pip</td>
         <td>requirements.txt</td>
@@ -174,6 +174,13 @@
         <td>environment.yml</td>
         <td>conda支持</td>
         <td>conda支持</td>
+    </tr>
+    <tr>
+        <td>python</td>
+        <td>uv</td>
+        <td>pyproject.toml</td>
+        <td>uv支持</td>
+        <td>uv支持</td>
     </tr>
     <tr>
         <td>TypeScript/JavaScript</td>
@@ -209,7 +216,7 @@ conda clean --all
 
 ### 3. 配置文件
 
-1. requirements.txt
+1. **venv**的配置文件requirements.txt
 
 ```
 certifi==2025.6.15
@@ -219,7 +226,7 @@ requests==2.32.4
 urllib3==2.5.0
 ```
 
-2. environment.yml
+2. **conda**的配置文件environment.yml
 
 ```
 name: /Users/zhushanbo/Desktop/send_im_message/.conda
