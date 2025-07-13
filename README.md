@@ -96,7 +96,7 @@
 
 ### 3. 安装模块或环境
 
-- 推荐在`虚拟环境`中安装模块
+1. 推荐在`虚拟环境`中安装模块
 
 `pip install urllib3 -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com`
 
@@ -106,17 +106,17 @@
 
 `pip install -r requirements.txt`
 
-- 如果是conda创建的虚拟环境，则安装模块：
+2. 如果是conda创建的虚拟环境，则安装模块：
 
 `conda install urllib3`
 
 安装整个环境：
 
-1. 指定路径下创建：`conda env create -f environment.yml --prefix .venv`
+- 指定路径下创建：`conda env create -f environment.yml --prefix .venv`
 
-2. 默认路径下创建：`conda env create -f environment.yml`
+- 默认路径下创建：`conda env create -f environment.yml`
 
-- 如果是uv创建的虚拟环境，则安装模块：
+3. 如果是uv创建的虚拟环境，则安装模块：
 
 `uv add requests`
 
@@ -126,29 +126,29 @@
 
 ### 4. 卸载模块
 
-- 推荐在`虚拟环境`中卸载模块
+1. 推荐在`虚拟环境`中卸载模块
 
 `pip uninstall urllib3`
 
-- 如果是conda创建的虚拟环境，则：
+2. 如果是conda创建的虚拟环境，则：
 
 `conda uninstall urllib3`
 
-- 如果是uv创建的虚拟环境，则：
+3. 如果是uv创建的虚拟环境，则：
 
 `uv remove requests`
 
 ### 5. 导出模块或环境
 
-- 必须在`虚拟环境`中导出模块
+1. 必须在`虚拟环境`中导出模块
 
 `pip freeze > requirements.txt`
 
-- 如果是conda创建的虚拟环境，则导出整个环境：
+2. 如果是conda创建的虚拟环境，则导出整个环境：
 
 `conda env export > environment.yml`
 
-- 如果是uv创建的虚拟环境，则导出整个环境：
+3. 如果是uv创建的虚拟环境，则导出整个环境：
 
 `pyproject.toml + uv.lock`
 
