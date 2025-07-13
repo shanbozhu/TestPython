@@ -58,6 +58,28 @@
 
 注：当前虚拟环境中的Python是conda下载的Python。
 
+三、通过**uv**创建虚拟环境
+
+1. 初始化一个 Python 项目
+
+`uv init myproject --python 3.10`
+
+2. 创建虚拟环境（可选，如果需要手动创建）
+
+`uv venv`
+
+3. 安装模块
+
+`uv add requests`
+
+4. 安装开发模块（可选）
+
+`uv add --dev pytest`
+
+5. 运行 Python 项目
+
+`uv run script.py`
+
 > 方式二：通过`IDEA`
 
 1. 使用`IDEA`软件打开项目目录。`注意：若打开项目目录后，只显示文件不显示目录，左侧栏颜色为黄色，则需要先删除项目目录下的.idea目录，然后重新打开项目目录`
@@ -104,6 +126,14 @@
 
 2. 默认路径下创建：`conda env create -f environment.yml`
 
+如果是uv创建的虚拟环境，则安装模块：
+
+`uv add requests`
+
+安装整个环境：
+
+`uv sync`
+
 ### 4. 卸载模块
 
 推荐在`虚拟环境`中卸载模块
@@ -114,6 +144,10 @@
 
 `conda uninstall urllib3`
 
+如果是uv创建的虚拟环境，则：
+
+`uv remove requests`
+
 ### 5. 导出模块或环境
 
 必须在`虚拟环境`中导出模块
@@ -123,6 +157,10 @@
 如果是conda创建的虚拟环境，则导出整个环境：
 
 `conda env export > environment.yml`
+
+如果是uv创建的虚拟环境，则导出整个环境：
+
+`pyproject.toml + uv.lock`
 
 ### 6. 打包项目
 
