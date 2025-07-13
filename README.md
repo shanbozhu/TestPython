@@ -136,29 +136,29 @@
 
 ### 4. 卸载模块
 
-推荐在`虚拟环境`中卸载模块
+- 推荐在`虚拟环境`中卸载模块
 
 `pip uninstall urllib3`
 
-如果是conda创建的虚拟环境，则：
+- 如果是conda创建的虚拟环境，则：
 
 `conda uninstall urllib3`
 
-如果是uv创建的虚拟环境，则：
+- 如果是uv创建的虚拟环境，则：
 
 `uv remove requests`
 
 ### 5. 导出模块或环境
 
-必须在`虚拟环境`中导出模块
+- 必须在`虚拟环境`中导出模块
 
 `pip freeze > requirements.txt`
 
-如果是conda创建的虚拟环境，则导出整个环境：
+- 如果是conda创建的虚拟环境，则导出整个环境：
 
 `conda env export > environment.yml`
 
-如果是uv创建的虚拟环境，则导出整个环境：
+- 如果是uv创建的虚拟环境，则导出整个环境：
 
 `pyproject.toml + uv.lock`
 
@@ -254,7 +254,7 @@ conda clean --all
 
 ### 3. 配置文件
 
-1. **venv**的配置文件requirements.txt
+1. **venv**的配置文件`requirements.txt`
 
 ```
 certifi==2025.6.15
@@ -264,7 +264,7 @@ requests==2.32.4
 urllib3==2.5.0
 ```
 
-2. **conda**的配置文件environment.yml
+2. **conda**的配置文件`environment.yml`
 
 ```
 name: /Users/zhushanbo/Desktop/send_im_message/.venv
@@ -298,4 +298,23 @@ dependencies:
   - xz=5.6.4=h80987f9_1
   - zlib=1.2.13=h18a0788_1
 prefix: /Users/zhushanbo/Desktop/send_im_message/.venv
+```
+
+3. **uv**的配置文件`pyproject.toml`
+
+```
+[project]
+name = "myproject1"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.32.4",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.1",
+]
 ```
