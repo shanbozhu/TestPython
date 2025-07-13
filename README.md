@@ -106,7 +106,7 @@
 
 ### 3. 安装模块或环境
 
-推荐在`虚拟环境`中安装模块
+- 推荐在`虚拟环境`中安装模块
 
 `pip install urllib3 -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com`
 
@@ -116,7 +116,7 @@
 
 `pip install -r requirements.txt`
 
-如果是conda创建的虚拟环境，则安装模块：
+- 如果是conda创建的虚拟环境，则安装模块：
 
 `conda install urllib3`
 
@@ -126,7 +126,7 @@
 
 2. 默认路径下创建：`conda env create -f environment.yml`
 
-如果是uv创建的虚拟环境，则安装模块：
+- 如果是uv创建的虚拟环境，则安装模块：
 
 `uv add requests`
 
