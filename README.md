@@ -45,10 +45,10 @@
 二、通过**conda**创建虚拟环境
 
 1. 进入项目根目录执行：
-	1. 指定路径下创建：`conda create --prefix .conda python=3.10`
-	2. 默认路径下创建：`conda create --name .conda python=3.10`
+	1. 指定路径下创建：`conda create --prefix .venv python=3.10`
+	2. 默认路径下创建：`conda create --name .venv python=3.10`
 
-2. 激活虚拟环境：`conda activate .conda`
+2. 激活虚拟环境：`conda activate .venv`
 
 3. 安装模块到虚拟环境：`conda install urllib3`
 
@@ -122,7 +122,7 @@
 
 安装整个环境：
 
-1. 指定路径下创建：`conda env create -f environment.yml --prefix .conda`
+1. 指定路径下创建：`conda env create -f environment.yml --prefix .venv`
 
 2. 默认路径下创建：`conda env create -f environment.yml`
 
@@ -166,7 +166,7 @@
 
 1. 使用`导出模块或环境`中的命令导出项目中的模块或环境。
 
-2. `压缩`当前项目，注意不要包含`.venv`或`.conda`虚拟环境目录。
+2. `压缩`当前项目，注意不要包含`.venv`虚拟环境目录。
 
 ### 7. 调试项目
 
@@ -237,11 +237,11 @@
 conda list
 2. 退出环境
 conda deactivate
-3. 删除环境
+3. 查看所有环境
+conda env list
+4. 删除环境
 conda env remove --name ENV_NAME
 conda env remove --prefix /path/to/ENV_NAME
-4. 查看所有环境
-conda env list
 5. 指定渠道
 conda install -c conda-forge PACKAGE_NAME
 6. 更新 Conda 本身
@@ -267,37 +267,35 @@ urllib3==2.5.0
 2. **conda**的配置文件environment.yml
 
 ```
-name: /Users/zhushanbo/Desktop/send_im_message/.conda
+name: /Users/zhushanbo/Desktop/send_im_message/.venv
 channels:
   - defaults
 dependencies:
-  - brotlicffi=1.0.9.2=py313h313beb8_1
+  - brotlicffi=1.0.9.2=py310h313beb8_1
   - bzip2=1.0.8=h80987f9_6
   - ca-certificates=2025.2.25=hca03da5_0
-  - certifi=2025.6.15=py313hca03da5_0
-  - cffi=1.17.1=py313h3eb5a62_1
+  - certifi=2025.6.15=py310hca03da5_0
+  - cffi=1.17.1=py310h3eb5a62_1
   - charset-normalizer=3.3.2=pyhd3eb1b0_0
   - expat=2.7.1=h313beb8_0
-  - idna=3.7=py313hca03da5_0
+  - idna=3.7=py310hca03da5_0
   - libcxx=17.0.6=he5c5206_4
   - libffi=3.4.4=hca03da5_1
-  - libmpdec=4.0.0=h80987f9_0
   - ncurses=6.4=h313beb8_0
   - openssl=3.0.16=h02f6b3c_0
   - pip=25.1=pyhc872135_2
   - pycparser=2.21=pyhd3eb1b0_0
-  - pysocks=1.7.1=py313hca03da5_0
-  - python=3.13.5=h2eb94d5_100_cp313
-  - python_abi=3.13=0_cp313
+  - pysocks=1.7.1=py310hca03da5_0
+  - python=3.10.18=h19e8193_0
   - readline=8.2=h1a28f6b_0
-  - requests=2.32.4=py313hca03da5_0
-  - setuptools=78.1.1=py313hca03da5_0
+  - requests=2.32.4=py310hca03da5_0
+  - setuptools=78.1.1=py310hca03da5_0
   - sqlite=3.45.3=h80987f9_0
   - tk=8.6.14=h6ba3021_1
   - tzdata=2025b=h04d1e81_0
-  - urllib3=2.5.0=py313hca03da5_0
-  - wheel=0.45.1=py313hca03da5_0
+  - urllib3=2.5.0=py310hca03da5_0
+  - wheel=0.45.1=py310hca03da5_0
   - xz=5.6.4=h80987f9_1
   - zlib=1.2.13=h18a0788_1
-prefix: /Users/zhushanbo/Desktop/send_im_message/.conda
+prefix: /Users/zhushanbo/Desktop/send_im_message/.venv
 ```
