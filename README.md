@@ -62,11 +62,11 @@
 
 1. 初始化一个 Python 项目：`uv init myproject --python 3.10`
 
-2. 创建虚拟环境（可选，如果需要手动创建）：`uv venv`
+2. 创建虚拟环境（可选。运行时可自动创建，无需手动创建）：`uv venv`
 
 3. 安装模块：`uv add requests`
 
-4. 安装开发模块（可选）：`uv add --dev pytest`
+4. 安装开发模块：`uv add --dev pytest`
 
 5. 运行 Python 项目：`uv run script.py`
 
@@ -96,7 +96,7 @@
 
 ### 3. 安装模块或环境
 
-1. 推荐在`虚拟环境`中安装模块
+1. 如果是venv创建的虚拟环境，则安装模块：
 
 `pip install urllib3 -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com`
 
@@ -126,7 +126,7 @@
 
 ### 4. 卸载模块
 
-1. 推荐在`虚拟环境`中卸载模块
+1. 如果是venv创建的虚拟环境，则：
 
 `pip uninstall urllib3`
 
@@ -140,7 +140,7 @@
 
 ### 5. 导出模块或环境
 
-1. 必须在`虚拟环境`中导出模块
+1. 如果是venv创建的虚拟环境，则导出模块：
 
 `pip freeze > requirements.txt`
 
