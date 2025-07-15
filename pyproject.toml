@@ -1,0 +1,13 @@
+[project]
+name = "testpython"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "curlify>=3.0.0",
+    "openai-whisper>=20250625",
+    "pyperclip>=1.9.0",
+    "requests>=2.32.4",
+    "segno>=1.6.6",
+]
