@@ -1,61 +1,42 @@
 #!/bin/bash
 # usage:
-# . start_venv.sh
-
-echo "需要使用. start_venv.sh执行当前shell脚本！！！"
+# ./start_venv.sh
 
 current_dir=$(pwd)
 venv_dir="$current_dir/.venv"
-python_file="your_python_file.py"
+
+# 检查是否安装 uv
+cmd="uv"
+if ! command -v "$cmd" &>/dev/null; then
+  printf "uv 未安装，正在安装...\n" >&2
+  if ! curl -LsSf https://astral.sh/uv/install.sh | sh; then
+    printf "uv 安装失败，请重试。\n" >&2
+    exit 1
+  fi
+  printf "uv 安装成功。\n"
+fi
 
 # 虚拟环境是否存在
 if [ ! -d "$venv_dir" ]; then
-  echo "虚拟环境不存在，正在创建..."
-  python3 -m venv .venv
+  echo "环境不存在，正在创建..."
+  uv init . --python 3.10
+  uv venv
   if [ $? -eq 0 ]; then
-    echo "虚拟环境创建成功。"
+    echo "环境创建成功。"
+    rm main.py
   else
-    echo "虚拟环境创建失败，请重试。"
+    echo "环境创建失败，请重试。"
     exit 1
   fi
 fi
 
-# 激活虚拟环境
-source $venv_dir/bin/activate
+# 同步环境
+uv sync
 if [ $? -eq 0 ]; then
-  # requirements.txt文件是否存在
-  requirements="$current_dir/requirements.txt"
-  installed_packages="$current_dir/.installed_packages.txt"
-  if [ -f "$requirements" ]; then
-    # 导出项目中已安装的模块
-    pip3 freeze > "$installed_packages"
-    if [ $? -ne 0 ]; then
-      echo "项目中已安装的模块导出失败，请重试。"
-      exit 1
-    fi
-    diff "$requirements" "$installed_packages" &> /dev/null
-    if [ $? -ne 0 ]; then
-      echo "虚拟环境中模块缺失，正在安装..."
-      pip3 install -r "$requirements" &> /dev/null
-      if [ $? -ne 0 ]; then
-        echo "虚拟环境中模块安装失败，请重试。"
-        exit 1
-      fi
-    fi
-  else
-    echo "没有模块列表文件，无法在虚拟环境中批量自动安装模块。请按照下面步骤手动执行！！！"
-    echo "  1. 执行Python脚本：$current_dir/$python_file 根据失败提示查看缺失的模块。"
-    echo "  2. 在虚拟环境中安装缺失的模块：pip3 install xyz，xyz表示缺失的模块。"
-    echo "  3. 重复步骤1和2安装所有缺失的模块，直至Python脚本执行成功。"
-    # exit 1
-  fi
+  echo "环境同步完成！！！"
 else
-  echo "虚拟环境激活失败，请重试。"
+  echo "环境同步失败，请重试。"
   exit 1
 fi
-# 虚拟环境启动成功
-echo "虚拟环境已经启动，可以开始执行Python脚本了..."
-# 执行脚本
-# "$current_dir/$python_file"
-# 导出项目中已安装的模块
-# pip3 freeze > "$requirements"
+# 环境启动成功
+echo "环境已经启动，可以开始使用 uv run xxx.py 执行 Python 脚本了..."
