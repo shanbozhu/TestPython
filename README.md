@@ -212,7 +212,7 @@
     </tr>
     <tr>
         <td>TypeScript/JavaScript</td>
-        <td>node</td>
+        <td>node（封装的V8引擎）</td>
         <td>npm</td>
         <td>package.json</td>
         <td>npm支持</td>
