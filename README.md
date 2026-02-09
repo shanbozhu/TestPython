@@ -1,4 +1,4 @@
-### 1. 安装python
+### 1. 安装 python
 
 `brew install python`
 
@@ -26,7 +26,7 @@
 
 > 方式一：通过`命令行`
 
-一、通过Python自带的**venv**创建虚拟环境。
+一、通过 Python 自带的 **venv** 创建虚拟环境。
 
 1. 进入项目根目录执行：`python -m venv .venv`
 
@@ -36,13 +36,13 @@
 
 3. 安装模块到虚拟环境：`pip install urllib3`
 
-4. 执行项目的Python脚本。
+4. 执行项目的 Python 脚本。
 
 5. 取消激活虚拟环境：`deactivate`
 
-注：当前虚拟环境中的Python是系统安装Python的引用。
+注：当前虚拟环境中的 Python 是系统安装 Python 的引用。
 
-二、通过**conda**创建虚拟环境
+二、通过 **conda** 创建虚拟环境
 
 1. 进入项目根目录执行：
 	1. 指定路径下创建：`conda create --prefix .venv python=3.10`
@@ -52,13 +52,13 @@
 
 3. 安装模块到虚拟环境：`conda install urllib3`
 
-4. 执行项目的Python脚本。
+4. 执行项目的 Python 脚本。
 
 5. 取消激活虚拟环境：`conda deactivate`
 
-注：当前虚拟环境中的Python是conda下载的Python。
+注：当前虚拟环境中的 Python 是 conda 下载的 Python。
 
-三、通过**uv**创建虚拟环境
+三、通过 **uv** 创建虚拟环境
 
 1. 初始化一个 Python 项目：`uv init myproject --python 3.10`
 
@@ -80,7 +80,7 @@
 
 3. 点击`IDEA`软件自带的终端，将模块安装到虚拟环境。
 
-4. 执行项目的Python脚本。
+4. 执行项目的 Python 脚本。
 
 > 方式三：通过`VSCode`
 
@@ -90,13 +90,13 @@
 
 3. 点击`VSCode`软件自带的终端，将模块安装到虚拟环境。
 
-4. 执行项目的Python脚本。
+4. 执行项目的 Python 脚本。
 
 参考文档：https://zhuanlan.zhihu.com/p/700249286
 
 ### 3. 安装模块或环境
 
-1. 如果是venv创建的虚拟环境，则安装模块：
+1. 如果是 venv 创建的虚拟环境，则安装模块：
 
 `pip install urllib3 -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com`
 
@@ -106,7 +106,7 @@
 
 `pip install -r requirements.txt`
 
-2. 如果是conda创建的虚拟环境，则安装模块：
+2. 如果是 conda 创建的虚拟环境，则安装模块：
 
 `conda install urllib3`
 
@@ -116,7 +116,7 @@
 
 - 默认路径下创建：`conda env create -f environment.yml`
 
-3. 如果是uv创建的虚拟环境，则安装模块：
+3. 如果是 uv 创建的虚拟环境，则安装模块：
 
 `uv add requests`
 
@@ -126,29 +126,29 @@
 
 ### 4. 卸载模块
 
-1. 如果是venv创建的虚拟环境，则：
+1. 如果是 venv 创建的虚拟环境，则：
 
 `pip uninstall urllib3`
 
-2. 如果是conda创建的虚拟环境，则：
+2. 如果是 conda 创建的虚拟环境，则：
 
 `conda uninstall urllib3`
 
-3. 如果是uv创建的虚拟环境，则：
+3. 如果是 uv 创建的虚拟环境，则：
 
 `uv remove requests`
 
 ### 5. 导出模块或环境
 
-1. 如果是venv创建的虚拟环境，则导出模块：
+1. 如果是 venv 创建的虚拟环境，则导出模块：
 
 `pip freeze > requirements.txt`
 
-2. 如果是conda创建的虚拟环境，则导出整个环境：
+2. 如果是 conda 创建的虚拟环境，则导出整个环境：
 
 `conda env export > environment.yml`
 
-3. 如果是uv创建的虚拟环境，则导出整个环境：
+3. 如果是 uv 创建的虚拟环境，则导出整个环境：
 
 `pyproject.toml + uv.lock`
 
@@ -185,42 +185,42 @@
         <td>Xcode</td>
         <td>pod</td>
         <td>podfile</td>
-        <td>pod支持</td>
-        <td>不支持。安装多个版本Xcode后可以支持</td>
+        <td>pod 支持</td>
+        <td>不支持。安装多个版本 Xcode 后可以支持</td>
     </tr>
     <tr>
         <td rowspan="3">Python</td>
         <td>python</td>
         <td>pip</td>
         <td>requirements.txt</td>
-        <td>pip不支持。依赖默认是全局安装的，结合venv虚拟环境后可以支持</td>
-        <td>不支持。结合pyenv安装多个版本python后可以支持</td>
+        <td>pip 不支持。依赖默认是全局安装的，结合 venv 虚拟环境后可以支持</td>
+        <td>不支持。结合 pyenv 安装多个版本 python 后可以支持</td>
     </tr>
     <tr>
         <td>python</td>
         <td>conda</td>
         <td>environment.yml</td>
-        <td>conda支持</td>
-        <td>conda支持</td>
+        <td>conda 支持</td>
+        <td>conda 支持</td>
     </tr>
     <tr>
         <td>python</td>
         <td>uv</td>
         <td>pyproject.toml</td>
-        <td>uv支持</td>
-        <td>uv支持</td>
+        <td>uv 支持</td>
+        <td>uv 支持</td>
     </tr>
     <tr>
         <td>TypeScript/JavaScript</td>
         <td>node（封装的V8引擎）</td>
         <td>npm</td>
         <td>package.json</td>
-        <td>npm支持</td>
-        <td>不支持。结合nvm安装多个版本node后可以支持</td>
+        <td>npm 支持</td>
+        <td>不支持。结合 nvm 安装多个版本 node 后可以支持</td>
     </tr>
 </table>
 
-### 2. conda常用命令
+### 2. conda 常用命令
 
 ```
 1. 查看已安装的包
@@ -244,7 +244,7 @@ conda clean --all
 
 ### 3. 配置文件
 
-1. **venv**的配置文件`requirements.txt`
+1. **venv** 的配置文件`requirements.txt`
 
 ```
 certifi==2025.6.15
@@ -254,7 +254,7 @@ requests==2.32.4
 urllib3==2.5.0
 ```
 
-2. **conda**的配置文件`environment.yml`
+2. **conda** 的配置文件`environment.yml`
 
 ```
 name: /Users/zhushanbo/Desktop/send_im_message/.venv
@@ -290,7 +290,7 @@ dependencies:
 prefix: /Users/zhushanbo/Desktop/send_im_message/.venv
 ```
 
-3. **uv**的配置文件`pyproject.toml`
+3. **uv** 的配置文件`pyproject.toml`
 
 ```
 [project]
