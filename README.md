@@ -54,10 +54,11 @@ draft: false
 三、通过 **uv** 创建虚拟环境
 
 1. 初始化一个 Python 项目：`uv init myproject --python 3.10`
-2. 创建虚拟环境（可选。运行时会自动创建，无需手动创建）：`uv venv`
-3. 安装模块：`uv add requests`
-4. 安装开发模块：`uv add --dev pytest`
-5. 运行 Python 项目：`uv run script.py`
+2. 进入项目根目录：`cd myproject`
+3. 创建虚拟环境（可选。运行时会自动创建，无需手动创建）：`uv venv`
+4. 安装模块：`uv add requests`
+5. 安装开发模块：`uv add --dev pytest`
+6. 运行 Python 项目：`uv run script.py`
 
 ### 方式二：通过`IDEA`
 
