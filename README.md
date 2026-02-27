@@ -190,6 +190,11 @@ draft: false
     </tr>
 </table>
 
+* pod：用于`objective-c`模块安装或卸载。服务于`OC社区`。pod 本身是使用 ruby 编写的软件，通过 gem 进行安装。
+* pip：用于`python`模块安装或卸载，安装`python`时会自动安装`pip`。服务于`Python社区`。
+* RubyGems：简称`gem`，用于`ruby`编写的软件的安装或卸载，安装`ruby`时会自动安装`gem`。服务于`Ruby社区`。
+* npm：用于`node.js`模块安装或卸载，安装`node.js`时会自动安装`npm`。服务于`JavaScript社区`。
+
 ## 二、conda 常用命令
 
 ```
