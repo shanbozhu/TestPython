@@ -180,6 +180,14 @@ draft: false
         <td>npm 支持</td>
         <td>不支持。结合 nvm 安装多个版本 node 后可以支持</td>
     </tr>
+    <tr>
+        <td>Ruby</td>
+        <td>ruby</td>
+        <td>gem</td>
+        <td>未知</td>
+        <td>gem 支持</td>
+        <td>不支持。结合 rvm/rbenv 安装多个版本 ruby 后可以支持</td>
+    </tr>
 </table>
 
 ## 二、conda 常用命令
