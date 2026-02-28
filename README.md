@@ -53,8 +53,8 @@ draft: false
 
 三、通过 **uv** 创建虚拟环境
 
-1. 初始化一个 Python 项目：`uv init myproject --python 3.10`
-2. 进入项目根目录：`cd myproject`
+1. 初始化一个 Python 项目：`uv init my-python-project --python 3.10`
+2. 进入项目根目录：`cd my-python-project`
 3. 创建虚拟环境（可选。运行时会自动创建，无需手动创建）：`uv venv`
 4. 安装模块：`uv add requests`
 5. 安装开发模块：`uv add --dev pytest`
@@ -267,7 +267,7 @@ prefix: /Users/zhushanbo/Desktop/send_im_message/.venv
 3. **uv** 的配置文件`pyproject.toml`
 ```
 [project]
-name = "myproject1"
+name = "my-python-project"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
